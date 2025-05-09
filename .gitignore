@@ -1,0 +1,7 @@
+.godot/
+.import/
+/android/
+*.tmp
+addons/*/*
+!addons/*/plugin.cfg
+*.translation

@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=3 uid="uid://2yr83b0qkao1"]
+
+[ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://1bcsjba9.png" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://duxqdv7k2g8ax" path="res://q7ynqg64.png" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://5nam6awxin16" path="res://npc.tscn" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bbn21hxal74jn" path="res://b4asm63y.png" id="4_272bh"]
+[ext_resource type="Script" uid="uid://bxpxwh66h55lo" path="res://camera_2d.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://dxpwp7m3dpc28" path="res://clickable.gd" id="6_272bh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 100
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 336.0
+offset_top = 158.0
+offset_right = 983.0
+offset_bottom = 435.0
+text = "  you found
+the secret!!!!!!"
+label_settings = SubResource("LabelSettings_7mycd")
+
+[node name="wall" type="TextureRect" parent="."]
+offset_left = -46.0
+offset_top = -19.0
+offset_right = 1055.0
+offset_bottom = 615.0
+texture = ExtResource("1_1bvp3")
+script = ExtResource("6_272bh")
+
+[node name="wall2" type="TextureRect" parent="."]
+offset_left = 1036.0
+offset_top = -20.0
+offset_right = 2082.0
+offset_bottom = 614.0
+texture = ExtResource("1_1bvp3")
+script = ExtResource("6_272bh")
+
+[node name="wall3" type="TextureRect" parent="."]
+offset_left = 2060.0
+offset_top = -10.0
+offset_right = 3065.0
+offset_bottom = 624.0
+texture = ExtResource("1_1bvp3")
+script = ExtResource("6_272bh")
+
+[node name="floor" type="TextureRect" parent="."]
+offset_left = -55.0
+offset_top = 531.0
+offset_right = 1209.0
+offset_bottom = 663.0
+texture = ExtResource("2_lquwl")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="floor2" type="TextureRect" parent="."]
+offset_left = 1196.0
+offset_top = 540.0
+offset_right = 2133.0
+offset_bottom = 672.0
+texture = ExtResource("2_lquwl")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="floor3" type="TextureRect" parent="."]
+offset_left = 2114.0
+offset_top = 521.0
+offset_right = 3102.0
+offset_bottom = 653.0
+texture = ExtResource("2_lquwl")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="jeff" parent="." instance=ExtResource("4_7mycd")]
+offset_left = 204.0
+offset_top = 215.0
+offset_right = 588.0
+offset_bottom = 459.0
+all_dialoge = "Hey Player, Click Me!
+Hello! My Name is Jeff! Jeff The Turorial NPC! :D
+I Have Three Very Imporant Things To Tell You! :)
+The Third Will SUPRISE And SHOCK You! :O
+FIRST: Use RIGHT And LEFT Arrow Keys To Move :)
+SECOND: I Have Been Told That There Is A Secret Some Where Around Here :O
+I Wonder Where It Could Be :?
+I Guess The Fact That There Is A Secret Isn't A Secret Anymore :|
+Or Actually The Game Jam Has The Theme Of Secret So I Guess :/
+I Guess That It Is Pretty Obvious That There Is A Secret >:/
+Dang That Sucks That It Wont Be A Suprise :(
+Well THIRD As I Promised: :)
+Wait No I Just Had A Thought :O
+ There IS Still A Secret :O
+ Just The State Of The Existance Of A Secret I Known :O
+Wait Actually I Think I Said That At The Start :?
+Yea I Think I Did Oops My Bad :(
+Well Anyway, A Suprise You Shall Still Have :)
+When You Discover The Secret That Is :)
+OK,  THIRD: :O
+(For Real This Time) :D
+I Have Been Told That There Is A... :O
+i think this is not really widly known so i need to say this quietly :o
+i have been told by... sources.. that there is a \"doomsday device\" somewhere around here :o
+Isnt That Crazy! :D
+Well That  Is All I Have To Say! You Can Click Me Again To Loop My Dialoge! :)
+
+!GoTo 1"
+
+[node name="june" parent="." instance=ExtResource("4_7mycd")]
+offset_left = 2120.0
+offset_top = 251.0
+offset_right = 2296.0
+offset_bottom = 444.0
+all_dialoge = "
+haiiiiiiii my name is JUNE >⏑<
+ok is it just me or does jeff yap waaaaaaayyyyyyyy to much ≖.≖
+like omg just shut up ∘`o´∘
+seriously starting to bother me intensely *~*
+actually i has an idea ≖ω≖
+i have a doomsday device .◠.
+how about you just go over and use it on jeff   ͡° ͜ʖ ͡°
+just make sure not to use it on anything else ok ≖‿≖
+!FlagTrue has_destroy_yet
+ok now when you click you with make it vanish ˵^◡^˵"
+
+[node name="table" type="TextureRect" parent="."]
+offset_left = 162.0
+offset_top = 347.0
+offset_right = 734.0
+offset_bottom = 675.0
+texture = ExtResource("4_272bh")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="table2" type="TextureRect" parent="."]
+offset_left = 1948.0
+offset_top = 367.0
+offset_right = 2520.0
+offset_bottom = 639.0
+texture = ExtResource("4_272bh")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(582, 320)
+script = ExtResource("6_7mycd")
+SPEED = 100.0
+ACCEL_RATE = 2.0
