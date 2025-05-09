@@ -143,6 +143,7 @@ script = ExtResource("6_272bh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(582, 320)
+editor_draw_limits = true
 script = ExtResource("6_7mycd")
 SPEED = 100.0
 ACCEL_RATE = 2.0
