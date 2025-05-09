@@ -1,6 +1,7 @@
 class_name NPC extends Clickable
 
 @export_multiline var all_dialoge : String
+@export var images : Dictionary[StringName, Texture2D]
 
 var dialoge: PackedStringArray
 var current_dialoge: int = 0
@@ -17,6 +18,20 @@ func execute_dialoge():
 	
 	if dialoge[current_dialoge].begins_with("!FlagTrue "):
 		GLOBAL.flags[StringName(dialoge[current_dialoge].right(-10))] = true
+		current_dialoge += 1
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!IfFlag "):
+		if GLOBAL.flags[StringName(dialoge[current_dialoge].right(-8))]:
+			current_dialoge += 1
+		else:
+			current_dialoge += 2
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!Image "):
+		texture = images[StringName(dialoge[current_dialoge].right(-7))]
 		current_dialoge += 1
 		execute_dialoge()
 		return

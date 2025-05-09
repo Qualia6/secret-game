@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://bevfs7t27hujb" path="res://npc.gd" id="2_xxcha"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kh24r"]
+line_spacing = -8.715
 font_size = 30
 
 [node name="npc" type="TextureRect"]
 offset_left = -148.0
 offset_top = -125.0
-offset_right = 157.0
+offset_right = -15.0
 offset_bottom = 115.0
 texture = ExtResource("1_xxcha")
 expand_mode = 1

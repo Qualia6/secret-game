@@ -1,11 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=20 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://1bcsjba9.png" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://duxqdv7k2g8ax" path="res://q7ynqg64.png" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://5nam6awxin16" path="res://npc.tscn" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bbn21hxal74jn" path="res://b4asm63y.png" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://blwrbfphq41n0" path="res://june/stand.png" id="5_074og"]
+[ext_resource type="Texture2D" uid="uid://47roib2wp13a" path="res://jeff/hmmm.png" id="5_ycdy4"]
 [ext_resource type="Script" uid="uid://bxpxwh66h55lo" path="res://camera_2d.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://dxpwp7m3dpc28" path="res://clickable.gd" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://hvmaey4fl31y" path="res://june/aaa.png" id="6_cegan"]
+[ext_resource type="Texture2D" uid="uid://bwcogln5sjiiw" path="res://jeff/sad.png" id="6_w48qg"]
+[ext_resource type="Texture2D" uid="uid://c6wnve7ahqo5c" path="res://june/hehe.png" id="7_82xsv"]
+[ext_resource type="Texture2D" uid="uid://cjud625arqbjn" path="res://jeff/secret.png" id="7_vivmo"]
+[ext_resource type="Texture2D" uid="uid://ca0jw7nylpmaf" path="res://jeff/smile.png" id="8_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://yqhc5b4awjjp" path="res://june/hehehehe.png" id="8_getpj"]
+[ext_resource type="Texture2D" uid="uid://dha06jhcfgs4f" path="res://june/yay.png" id="9_ryguw"]
+[ext_resource type="Texture2D" uid="uid://bteq6bebkma1k" path="res://jeff/wave.png" id="9_yaehf"]
+[ext_resource type="Texture2D" uid="uid://cx2ko6w6qolv0" path="res://jeff/wow.png" id="10_074og"]
+[ext_resource type="Texture2D" uid="uid://dooyuiq7ckvob" path="res://jeff/yay.png" id="11_cegan"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 100
@@ -72,74 +84,123 @@ texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
-[node name="jeff" parent="." instance=ExtResource("4_7mycd")]
-offset_left = 204.0
-offset_top = 215.0
-offset_right = 588.0
-offset_bottom = 459.0
-all_dialoge = "Hey Player, Click Me!
-Hello! My Name is Jeff! Jeff The Turorial NPC! :D
-I Have Three Very Imporant Things To Tell You! :)
-The Third Will SUPRISE And SHOCK You! :O
-FIRST: Use RIGHT And LEFT Arrow Keys To Move :)
-SECOND: I Have Been Told That There Is A Secret Some Where Around Here :O
-I Wonder Where It Could Be :?
-I Guess The Fact That There Is A Secret Isn't A Secret Anymore :|
-Or Actually The Game Jam Has The Theme Of Secret So I Guess :/
-I Guess That It Is Pretty Obvious That There Is A Secret >:/
-Dang That Sucks That It Wont Be A Suprise :(
-Well THIRD As I Promised: :)
-Wait No I Just Had A Thought :O
- There IS Still A Secret :O
- Just The State Of The Existance Of A Secret I Known :O
-Wait Actually I Think I Said That At The Start :?
-Yea I Think I Did Oops My Bad :(
-Well Anyway, A Suprise You Shall Still Have :)
-When You Discover The Secret That Is :)
-OK,  THIRD: :O
-(For Real This Time) :D
-I Have Been Told That There Is A... :O
-i think this is not really widly known so i need to say this quietly :o
-i have been told by... sources.. that there is a \"doomsday device\" somewhere around here :o
-Isnt That Crazy! :D
-Well That  Is All I Have To Say! You Can Click Me Again To Loop My Dialoge! :)
-
-!GoTo 1"
-
 [node name="june" parent="." instance=ExtResource("4_7mycd")]
-offset_left = 2120.0
-offset_top = 251.0
-offset_right = 2296.0
-offset_bottom = 444.0
-all_dialoge = "
-haiiiiiiii my name is JUNE >⏑<
-ok is it just me or does jeff yap waaaaaaayyyyyyyy to much ≖.≖
-like omg just shut up ∘`o´∘
-seriously starting to bother me intensely *~*
-actually i has an idea ≖ω≖
-i have a doomsday device .◠.
-how about you just go over and use it on jeff   ͡° ͜ʖ ͡°
-just make sure not to use it on anything else ok ≖‿≖
+offset_left = 1958.0
+offset_top = 171.0
+offset_right = 2290.0
+offset_bottom = 537.0
+texture = ExtResource("5_074og")
+all_dialoge = "!Image stand
+
+!Image yay
+haiiiiiiii my name is JUNE
+!IfFlag jeff_yap
+!GoTo 10
+!Image stand
+you should probably see what jeff has to say first
+
+!GoTo 4
+!Image aaaa
+ok is it just me or does Jeff yap waaaaaaayyyyyyyy to much
+like omg just shut up
+seriously starting to bother me intensely
+!Image hehe
+actually i has an idea
+!Image hehehehe
+i have a doomsday device
+how about you just go over and use it on jeff 
+just make sure not to use it on anything else ok
+!Image yay
 !FlagTrue has_destroy_yet
-ok now when you click you with make it vanish ˵^◡^˵"
+ok now when you click you with make it vanish"
+images = Dictionary[StringName, Texture2D]({
+&"aaaa": ExtResource("6_cegan"),
+&"hehe": ExtResource("7_82xsv"),
+&"hehehehe": ExtResource("8_getpj"),
+&"stand": ExtResource("5_074og"),
+&"yay": ExtResource("9_ryguw")
+})
 
 [node name="table" type="TextureRect" parent="."]
-offset_left = 162.0
-offset_top = 347.0
-offset_right = 734.0
-offset_bottom = 675.0
+offset_left = 149.0
+offset_top = 455.0
+offset_right = 721.0
+offset_bottom = 666.0
 texture = ExtResource("4_272bh")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
 [node name="table2" type="TextureRect" parent="."]
-offset_left = 1948.0
-offset_top = 367.0
-offset_right = 2520.0
-offset_bottom = 639.0
+offset_left = 1885.0
+offset_top = 413.0
+offset_right = 2487.0
+offset_bottom = 626.0
 texture = ExtResource("4_272bh")
 expand_mode = 1
 script = ExtResource("6_272bh")
+
+[node name="jeff" parent="." instance=ExtResource("4_7mycd")]
+offset_left = 282.0
+offset_top = 178.0
+offset_right = 613.0
+offset_bottom = 517.0
+texture = ExtResource("11_cegan")
+all_dialoge = "!Image yay
+Hey Player, Click Me!
+!Image wave
+Hello! My Name is Jeff! Jeff The Turorial NPC!
+!Image smile
+I Have Three Very Imporant Things To Tell You!
+!Image wow
+The Third Will SUPRISE And SHOCK You!
+!Image smile
+FIRST: Use RIGHT And LEFT Arrow Keys To Move
+!Image wow
+SECOND: I Have Been Told That There Is A Secret Some Where Around Here
+!Image hmmm
+I Wonder Where It Could Be
+I Guess The Fact That There Is A Secret Isn't A Secret Anymore
+Or Actually The Game Jam Has The Theme Of Secret So I Guess
+I Guess That It Is Pretty Obvious That There Is A Secret
+!Image sad
+Dang That Sucks That It Wont Be A Suprise
+!Image yay
+Well THIRD As I Promised
+!Image hmmm
+Wait No I Just Had A Thought
+ There IS Still A Secret
+ Just The State Of The Existance Of A Secret I Known
+Wait Actually I Think I Said That At The Start
+!Image sad
+Yea I Think I Did Oops My Bad
+!Image yay
+Well Anyway, A Suprise You Shall Still Have
+!Image yay
+When You Discover The Secret That Is
+OK,  THIRD
+!Image smile
+(For Real This Time)
+!Image wow
+I Have Been Told That There Is A...
+!Image secret
+i think this is not really widly known so i need to say this quietly
+i have been told by... sources.. that there is a \"doomsday device\" somewhere around here
+!Image wow
+Isnt That Crazy!
+!FlagTrue jeff_yap
+!Image smile
+Well That  Is All I Have To Say! You Can Click Me Again To Loop My Dialoge!
+
+!GoTo 2"
+images = Dictionary[StringName, Texture2D]({
+&"hmmm": ExtResource("5_ycdy4"),
+&"sad": ExtResource("6_w48qg"),
+&"secret": ExtResource("7_vivmo"),
+&"smile": ExtResource("8_2cqfq"),
+&"wave": ExtResource("9_yaehf"),
+&"wow": ExtResource("10_074og"),
+&"yay": ExtResource("11_cegan")
+})
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(582, 320)
