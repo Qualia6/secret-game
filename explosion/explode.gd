@@ -4,6 +4,7 @@ var frame: int = 0
 var time_since_frame_change: float = 0
 var time_per_frame: float = 0.04
 
+signal finished
 
 static var explode_class: PackedScene = preload("res://explosion/explode.tscn")
 static func explode(new_pos: Vector2, new_size: Vector2, image: Texture2D, new_parent: Node):
@@ -28,4 +29,5 @@ func _process(delta: float) -> void:
 
 
 func _on_sound_finished() -> void:
+	finished.emit()
 	queue_free()

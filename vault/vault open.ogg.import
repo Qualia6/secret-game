@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxcuf8oj1ie44"
+path="res://.godot/imported/vault open.ogg-c64136a29de08346bf65fa48105a036f.oggvorbisstr"
+
+[deps]
+
+source_file="res://vault/vault open.ogg"
+dest_files=["res://.godot/imported/vault open.ogg-c64136a29de08346bf65fa48105a036f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

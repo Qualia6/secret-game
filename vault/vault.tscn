@@ -1,0 +1,265 @@
+[gd_scene load_steps=12 format=3 uid="uid://cuunrq33jm0fm"]
+
+[ext_resource type="Texture2D" uid="uid://bfypdpfjwf6j0" path="res://vault/closed.png" id="1_hirqf"]
+[ext_resource type="Script" uid="uid://l1b3nperkpn5" path="res://vault/vault.gd" id="2_lgmu6"]
+[ext_resource type="Texture2D" uid="uid://du6h08ue2adrl" path="res://vault/open.png" id="3_v4oa6"]
+[ext_resource type="Texture2D" uid="uid://sgmdyvq13y6f" path="res://vault/opening.png" id="4_lu6se"]
+[ext_resource type="Texture2D" uid="uid://teegtvdc5nvk" path="res://vault/spinny.png" id="5_ngoq2"]
+[ext_resource type="AudioStream" uid="uid://bxcuf8oj1ie44" path="res://vault/vault open.ogg" id="6_ih7ff"]
+[ext_resource type="Texture2D" uid="uid://bghmickhvwkcn" path="res://arrow.png" id="7_ih7ff"]
+[ext_resource type="Script" uid="uid://dxpwp7m3dpc28" path="res://clickable.gd" id="8_7gim0"]
+
+[sub_resource type="Animation" id="Animation_uvsaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spinny:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("opening:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("open:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spinny:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("VaultOpen:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("into vault arrow:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("into vault arrow:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(79, 188)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("into vault arrow:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(303, 295)]
+}
+
+[sub_resource type="Animation" id="Animation_7gim0"]
+resource_name = "open"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spinny:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("opening:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 3.66667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("open:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spinny:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 6.28319]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VaultOpen:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("into vault arrow:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("into vault arrow:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.66667, 4.46667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-122, 55), Vector2(79, 188)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("into vault arrow:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.3, 4.46667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(123.075, 96.735), Vector2(303, 295)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jtk66"]
+_data = {
+&"RESET": SubResource("Animation_uvsaa"),
+&"open": SubResource("Animation_7gim0")
+}
+
+[node name="closed" type="TextureRect"]
+offset_right = 771.0
+offset_bottom = 720.0
+texture = ExtResource("1_hirqf")
+script = ExtResource("2_lgmu6")
+
+[node name="open" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -453.0
+offset_right = 771.0
+offset_bottom = 720.0
+texture = ExtResource("3_v4oa6")
+expand_mode = 1
+
+[node name="opening" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 771.0
+offset_bottom = 800.0
+texture = ExtResource("4_lu6se")
+expand_mode = 1
+
+[node name="Spinny" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(518, 441)
+texture = ExtResource("5_ngoq2")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jtk66")
+}
+autoplay = "RESET"
+
+[node name="VaultOpen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ih7ff")
+
+[node name="into vault arrow" type="TextureRect" parent="."]
+visible = false
+offset_left = 79.0
+offset_top = 188.0
+offset_right = 382.0
+offset_bottom = 483.0
+texture = ExtResource("7_ih7ff")
+expand_mode = 1
+script = ExtResource("8_7gim0")
+
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_animation_finished"]
+[connection signal="clicked" from="into vault arrow" to="." method="_on_into_vault_arrow_clicked"]

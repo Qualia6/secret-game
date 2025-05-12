@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=29 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://1bcsjba9.png" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://duxqdv7k2g8ax" path="res://q7ynqg64.png" id="2_lquwl"]
@@ -13,11 +13,20 @@
 [ext_resource type="Texture2D" uid="uid://c6wnve7ahqo5c" path="res://june/hehe.png" id="7_82xsv"]
 [ext_resource type="Texture2D" uid="uid://cjud625arqbjn" path="res://jeff/secret.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://ca0jw7nylpmaf" path="res://jeff/smile.png" id="8_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://yqhc5b4awjjp" path="res://june/hehehehe.png" id="8_getpj"]
 [ext_resource type="Texture2D" uid="uid://dha06jhcfgs4f" path="res://june/yay.png" id="9_ryguw"]
 [ext_resource type="Texture2D" uid="uid://bteq6bebkma1k" path="res://jeff/wave.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cx2ko6w6qolv0" path="res://jeff/wow.png" id="10_074og"]
+[ext_resource type="Texture2D" uid="uid://eeggkph6ri8t" path="res://june/evil.png" id="10_d13ii"]
+[ext_resource type="Texture2D" uid="uid://caedqxhxpg7m5" path="res://june/key.png" id="11_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://dooyuiq7ckvob" path="res://jeff/yay.png" id="11_cegan"]
+[ext_resource type="Texture2D" uid="uid://bka7iqm6jgkus" path="res://june/key_evil.png" id="12_0odxb"]
+[ext_resource type="Script" uid="uid://dixv4pmd8c0ma" path="res://jeff/jeff.gd" id="14_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://br6n4l5qggw1j" path="res://jeff/dead.png" id="20_d13ii"]
+[ext_resource type="PackedScene" uid="uid://cuunrq33jm0fm" path="res://vault/vault.tscn" id="21_d13ii"]
+[ext_resource type="PackedScene" uid="uid://dnavoepbtdcge" path="res://inventory/inventory.tscn" id="22_ryguw"]
+[ext_resource type="Texture2D" uid="uid://bghmickhvwkcn" path="res://arrow.png" id="23_0odxb"]
+[ext_resource type="Texture2D" uid="uid://dfluraqjblnfb" path="res://dooms day device/doom_day_device_temp.png" id="24_a6jrf"]
+[ext_resource type="Script" uid="uid://bty1qunf2eevb" path="res://dooms day device/temp_doomsday_device.gd" id="25_xuqvo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 100
@@ -33,7 +42,9 @@ text = "  you found
 the secret!!!!!!"
 label_settings = SubResource("LabelSettings_7mycd")
 
-[node name="wall" type="TextureRect" parent="."]
+[node name="row 1" type="Node2D" parent="."]
+
+[node name="wall" type="TextureRect" parent="row 1"]
 offset_left = -46.0
 offset_top = -19.0
 offset_right = 1055.0
@@ -41,122 +52,165 @@ offset_bottom = 615.0
 texture = ExtResource("1_1bvp3")
 script = ExtResource("6_272bh")
 
-[node name="wall2" type="TextureRect" parent="."]
-offset_left = 1036.0
+[node name="wall2" type="TextureRect" parent="row 1"]
+offset_left = 907.0
 offset_top = -20.0
-offset_right = 2082.0
+offset_right = 1953.0
 offset_bottom = 614.0
 texture = ExtResource("1_1bvp3")
 script = ExtResource("6_272bh")
 
-[node name="wall3" type="TextureRect" parent="."]
-offset_left = 2060.0
-offset_top = -10.0
-offset_right = 3065.0
-offset_bottom = 624.0
+[node name="wall3" type="TextureRect" parent="row 1"]
+offset_left = 1732.0
+offset_top = -23.0
+offset_right = 2737.0
+offset_bottom = 611.0
 texture = ExtResource("1_1bvp3")
 script = ExtResource("6_272bh")
 
-[node name="floor" type="TextureRect" parent="."]
-offset_left = -55.0
-offset_top = 531.0
-offset_right = 1209.0
-offset_bottom = 663.0
+[node name="wall4" type="TextureRect" parent="row 1"]
+offset_left = 2714.0
+offset_top = -24.0
+offset_right = 3815.0
+offset_bottom = 610.0
+texture = ExtResource("1_1bvp3")
+script = ExtResource("6_272bh")
+
+[node name="floor" type="TextureRect" parent="row 1"]
+offset_left = -237.0
+offset_top = 524.0
+offset_right = 1027.0
+offset_bottom = 656.0
 texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
-[node name="floor2" type="TextureRect" parent="."]
-offset_left = 1196.0
-offset_top = 540.0
-offset_right = 2133.0
-offset_bottom = 672.0
+[node name="floor2" type="TextureRect" parent="row 1"]
+offset_left = 1024.0
+offset_top = 525.0
+offset_right = 1961.0
+offset_bottom = 657.0
 texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
-[node name="floor3" type="TextureRect" parent="."]
-offset_left = 2114.0
-offset_top = 521.0
-offset_right = 3102.0
-offset_bottom = 653.0
+[node name="floor3" type="TextureRect" parent="row 1"]
+offset_left = 1950.0
+offset_top = 525.0
+offset_right = 2938.0
+offset_bottom = 657.0
 texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
-[node name="june" parent="." instance=ExtResource("4_7mycd")]
-offset_left = 1958.0
-offset_top = 171.0
-offset_right = 2290.0
-offset_bottom = 537.0
+[node name="floor4" type="TextureRect" parent="row 1"]
+offset_left = 2914.0
+offset_top = 525.0
+offset_right = 3902.0
+offset_bottom = 657.0
+texture = ExtResource("2_lquwl")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="june" parent="row 1" instance=ExtResource("4_7mycd")]
+offset_left = 1760.0
+offset_top = 190.0
+offset_right = 2092.0
+offset_bottom = 556.0
 texture = ExtResource("5_074og")
 all_dialoge = "!Image stand
 
 !Image yay
 haiiiiiiii my name is JUNE
+~ START IF
 !IfFlag jeff_yap
-!GoTo 10
+!GoTo TALKED TO JEFF
 !Image stand
 you should probably see what jeff has to say first
 
-!GoTo 4
+!GoTo START IF
+~ TALKED TO JEFF
 !Image aaaa
 ok is it just me or does Jeff yap waaaaaaayyyyyyyy to much
 like omg just shut up
 seriously starting to bother me intensely
 !Image hehe
 actually i has an idea
-!Image hehehehe
-i have a doomsday device
-how about you just go over and use it on jeff 
-just make sure not to use it on anything else ok
-!Image yay
-!FlagTrue has_destroy_yet
-ok now when you click you with make it vanish"
+!Image key
+look at this key
+its veeeeerrrryyyyy heavy and sharp cause its made for a vault
+but instead of using it on a vault i have a waaaaayyyyy better idea
+!Image key_evil
+use it to hit jeff
+!FlagTrue has_key
+!Image hehe
+
+!Image evil
+hit jeff!
+~ HIT JEFF
+!Image hehe
+
+!IfHolding key
+!GoTo SKIP HINT
+!Image stand
+(you need to click the key in your inventory to weild it)
+!GoTo HIT JEFF
+~ SKIP HINT
+!Image evil
+hit jeff! hit jeff! hit jeff!
+hehehe
+!GoTo HIT JEFF
+"
 images = Dictionary[StringName, Texture2D]({
 &"aaaa": ExtResource("6_cegan"),
+&"evil": ExtResource("10_d13ii"),
 &"hehe": ExtResource("7_82xsv"),
-&"hehehehe": ExtResource("8_getpj"),
+&"key": ExtResource("11_1u8w0"),
+&"key_evil": ExtResource("12_0odxb"),
 &"stand": ExtResource("5_074og"),
 &"yay": ExtResource("9_ryguw")
 })
 
-[node name="table" type="TextureRect" parent="."]
-offset_left = 149.0
-offset_top = 455.0
-offset_right = 721.0
-offset_bottom = 666.0
+[node name="table" type="TextureRect" parent="row 1"]
+offset_left = 122.0
+offset_top = 453.0
+offset_right = 694.0
+offset_bottom = 664.0
 texture = ExtResource("4_272bh")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
-[node name="table2" type="TextureRect" parent="."]
-offset_left = 1885.0
-offset_top = 413.0
-offset_right = 2487.0
-offset_bottom = 626.0
+[node name="table2" type="TextureRect" parent="row 1"]
+offset_left = 1689.0
+offset_top = 415.0
+offset_right = 2291.0
+offset_bottom = 628.0
 texture = ExtResource("4_272bh")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
-[node name="jeff" parent="." instance=ExtResource("4_7mycd")]
-offset_left = 282.0
-offset_top = 178.0
-offset_right = 613.0
-offset_bottom = 517.0
-texture = ExtResource("11_cegan")
+[node name="jeff" parent="row 1" instance=ExtResource("4_7mycd")]
+texture_filter = 1
+offset_left = 263.0
+offset_top = 184.0
+offset_right = 594.0
+offset_bottom = 523.0
+texture = ExtResource("9_yaehf")
+script = ExtResource("14_1u8w0")
 all_dialoge = "!Image yay
 Hey Player, Click Me!
+~ LOOP
 !Image wave
 Hello! My Name is Jeff! Jeff The Turorial NPC!
 !Image smile
-I Have Three Very Imporant Things To Tell You!
+I Have FOUR Very Imporant Things To Tell You!
 !Image wow
-The Third Will SUPRISE And SHOCK You!
+The FOURTH Will SUPRISE And SHOCK You!
 !Image smile
 FIRST: Use RIGHT And LEFT Arrow Keys To Move
+SECOND: Press i To Open And Close Your Inventory
 !Image wow
-SECOND: I Have Been Told That There Is A Secret Some Where Around Here
+THIRD: I Have Been Told That There Is A Secret Some Where Around Here
 !Image hmmm
 I Wonder Where It Could Be
 I Guess The Fact That There Is A Secret Isn't A Secret Anymore
@@ -165,7 +219,7 @@ I Guess That It Is Pretty Obvious That There Is A Secret
 !Image sad
 Dang That Sucks That It Wont Be A Suprise
 !Image yay
-Well THIRD As I Promised
+Well The SHOCKING FOURTH As I Promised
 !Image hmmm
 Wait No I Just Had A Thought
  There IS Still A Secret
@@ -177,7 +231,7 @@ Yea I Think I Did Oops My Bad
 Well Anyway, A Suprise You Shall Still Have
 !Image yay
 When You Discover The Secret That Is
-OK,  THIRD
+OK,  FOURTH
 !Image smile
 (For Real This Time)
 !Image wow
@@ -191,8 +245,15 @@ Isnt That Crazy!
 !Image smile
 Well That  Is All I Have To Say! You Can Click Me Again To Loop My Dialoge!
 
-!GoTo 2"
+!GoTo LOOP
+~ HIT BY KEY
+!Image dead
+
+!GoTo HIT BY KEY
+
+"
 images = Dictionary[StringName, Texture2D]({
+&"dead": ExtResource("20_d13ii"),
 &"hmmm": ExtResource("5_ycdy4"),
 &"sad": ExtResource("6_w48qg"),
 &"secret": ExtResource("7_vivmo"),
@@ -202,9 +263,82 @@ images = Dictionary[StringName, Texture2D]({
 &"yay": ExtResource("11_cegan")
 })
 
+[node name="Node2D" type="Node2D" parent="row 1"]
+skew = 0.523599
+
+[node name="wall4" type="TextureRect" parent="row 1/Node2D"]
+offset_left = -240.925
+offset_top = 98.1495
+offset_right = -69.9252
+offset_bottom = 658.15
+rotation = -0.523599
+scale = Vector2(1.33052, 1.32394)
+texture = ExtResource("1_1bvp3")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="Node2D2" type="Node2D" parent="row 1"]
+skew = -0.523599
+
+[node name="wall4" type="TextureRect" parent="row 1/Node2D2"]
+offset_left = 3743.62
+offset_top = -9.23785
+offset_right = 3914.62
+offset_bottom = 550.762
+rotation = 0.523599
+scale = Vector2(1.33052, 1.32394)
+texture = ExtResource("1_1bvp3")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="Node2D3" type="Node2D" parent="row 1"]
+scale = Vector2(0.8, 0.8)
+
+[node name="vault" parent="row 1/Node2D3" instance=ExtResource("21_d13ii")]
+offset_left = 3815.0
+offset_top = -11.25
+offset_right = 4586.0
+offset_bottom = 708.75
+
+[node name="row 2" type="Node2D" parent="."]
+
+[node name="arrow_out_of_vault" type="TextureRect" parent="row 2"]
+offset_left = 3567.0
+offset_top = 1210.0
+offset_right = 3870.0
+offset_bottom = 1505.0
+rotation = 3.14159
+texture = ExtResource("23_0odxb")
+expand_mode = 1
+script = ExtResource("6_272bh")
+explodeable = false
+
+[node name="temp doomsday device" type="TextureRect" parent="row 2"]
+offset_left = 176.0
+offset_top = 1048.0
+offset_right = 312.0
+offset_bottom = 1168.0
+texture = ExtResource("24_a6jrf")
+expand_mode = 1
+script = ExtResource("25_xuqvo")
+explodeable = false
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(582, 320)
+position = Vector2(600, 320)
 editor_draw_limits = true
 script = ExtResource("6_7mycd")
 SPEED = 100.0
 ACCEL_RATE = 2.0
+min_x = 360.064
+max_x = 3317.15
+
+[node name="Inventory" parent="Camera2D" instance=ExtResource("22_ryguw")]
+visible = false
+offset_left = -578.0
+offset_top = -324.0
+offset_right = 582.0
+offset_bottom = 331.0
+
+[connection signal="travel_through_vault" from="row 1/Node2D3/vault" to="Camera2D" method="_on_vault_travel_through_vault"]
+[connection signal="clicked" from="row 2/arrow_out_of_vault" to="Camera2D" method="_on_arrow_out_of_vault_clicked"]
+[connection signal="clicked" from="row 2/temp doomsday device" to="Camera2D" method="_on_arrow_out_of_vault_clicked"]

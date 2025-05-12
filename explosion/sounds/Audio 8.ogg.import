@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bnvebx41cvlkf"
+path="res://.godot/imported/Audio 8.ogg-ab325cd82d5a4203202cdd669bcfe6c0.oggvorbisstr"
+
+[deps]
+
+source_file="res://explosion/sounds/Audio 8.ogg"
+dest_files=["res://.godot/imported/Audio 8.ogg-ab325cd82d5a4203202cdd669bcfe6c0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

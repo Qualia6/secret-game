@@ -4,6 +4,9 @@ extends Camera2D
 @export var ACCEL_RATE: float
 var acceleration: float = 0
 
+@export var min_x: float
+@export var max_x: float
+
 
 func _physics_process(delta: float) -> void:
 	var desired_dir: float = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
@@ -14,3 +17,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		acceleration = max(acceleration - delta * jerk, desired_dir)
 	position.x += acceleration * SPEED
+	position.x = clamp(position.x, min_x, max_x)
+
+func _ready():
+	position.y = 320
+
+func _on_vault_travel_through_vault() -> void:
+	position.y = 1000
+
+func _on_arrow_out_of_vault_clicked() -> void:
+	position.y = 320
