@@ -50,12 +50,14 @@ func execute_dialoge():
 		return
 	
 	if dialoge[current_dialoge].begins_with("!Image "):
-		texture = images[StringName(dialoge[current_dialoge].right(-7))]
+		texture = images[StringName(dialoge[current_dialoge].right(-7).to_lower())]
 		current_dialoge += 1
 		execute_dialoge()
 		return
 	
 	$Label.text = dialoge[current_dialoge]
+
+func _updated(): pass
 
 func parse_all_dialoge():
 	dialoge = all_dialoge.split("\n")
@@ -71,6 +73,7 @@ func _ready() -> void:
 	parse_all_dialoge()
 	current_dialoge = 0
 	execute_dialoge()
+	GLOBAL.emitter.updated.connect(_updated)
 
 func _clicked() -> void:
 	if current_dialoge >= len(dialoge): return

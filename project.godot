@@ -13,7 +13,7 @@ config_version=5
 config/name="secret game jam"
 run/main_scene="uid://2yr83b0qkao1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cj7v5ffodqxmp"
 
 [display]
 

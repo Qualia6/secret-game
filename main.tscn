@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=36 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://1bcsjba9.png" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://duxqdv7k2g8ax" path="res://q7ynqg64.png" id="2_lquwl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bxpxwh66h55lo" path="res://camera_2d.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://dxpwp7m3dpc28" path="res://clickable.gd" id="6_272bh"]
 [ext_resource type="Texture2D" uid="uid://hvmaey4fl31y" path="res://june/aaa.png" id="6_cegan"]
+[ext_resource type="Script" uid="uid://c8qouthao0yki" path="res://june/june.gd" id="6_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://bwcogln5sjiiw" path="res://jeff/sad.png" id="6_w48qg"]
 [ext_resource type="Texture2D" uid="uid://c6wnve7ahqo5c" path="res://june/hehe.png" id="7_82xsv"]
 [ext_resource type="Texture2D" uid="uid://cjud625arqbjn" path="res://jeff/secret.png" id="7_vivmo"]
@@ -25,8 +26,14 @@
 [ext_resource type="PackedScene" uid="uid://cuunrq33jm0fm" path="res://vault/vault.tscn" id="21_d13ii"]
 [ext_resource type="PackedScene" uid="uid://dnavoepbtdcge" path="res://inventory/inventory.tscn" id="22_ryguw"]
 [ext_resource type="Texture2D" uid="uid://bghmickhvwkcn" path="res://arrow.png" id="23_0odxb"]
+[ext_resource type="Texture2D" uid="uid://bhqmbx8nrrk3f" path="res://cave/cave_full.jpg" id="23_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://dfluraqjblnfb" path="res://dooms day device/doom_day_device_temp.png" id="24_a6jrf"]
 [ext_resource type="Script" uid="uid://bty1qunf2eevb" path="res://dooms day device/temp_doomsday_device.gd" id="25_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://btj2trj6bccud" path="res://jerboa/side.png" id="28_4k2k6"]
+[ext_resource type="Texture2D" uid="uid://b32xg2fnnhimk" path="res://jerboa/side_lean.png" id="29_0rl1p"]
+[ext_resource type="Texture2D" uid="uid://r2jqlpofr0r" path="res://jerboa/front_lean.png" id="30_ok6jj"]
+[ext_resource type="Texture2D" uid="uid://dx3s18u1p7p14" path="res://jerboa/front.png" id="31_facbu"]
+[ext_resource type="Texture2D" uid="uid://cbqthswj5smp3" path="res://jerboa/back.png" id="32_b1qrp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 100
@@ -118,6 +125,7 @@ offset_top = 190.0
 offset_right = 2092.0
 offset_bottom = 556.0
 texture = ExtResource("5_074og")
+script = ExtResource("6_qsp4k")
 all_dialoge = "!Image stand
 
 !Image yay
@@ -160,7 +168,16 @@ hit jeff!
 hit jeff! hit jeff! hit jeff!
 hehehe
 !GoTo HIT JEFF
-"
+~ WOW KEY KILL
+
+!Image stand
+wow you actually killed him
+im impressed
+
+i didnt think you would actually do it kinda crazy
+
+but at least hes not gonna bug us anymore
+!GoTo WOW KEY KILL"
 images = Dictionary[StringName, Texture2D]({
 &"aaaa": ExtResource("6_cegan"),
 &"evil": ExtResource("10_d13ii"),
@@ -170,6 +187,7 @@ images = Dictionary[StringName, Texture2D]({
 &"stand": ExtResource("5_074og"),
 &"yay": ExtResource("9_ryguw")
 })
+explodeable = null
 
 [node name="table" type="TextureRect" parent="row 1"]
 offset_left = 122.0
@@ -192,9 +210,9 @@ script = ExtResource("6_272bh")
 [node name="jeff" parent="row 1" instance=ExtResource("4_7mycd")]
 texture_filter = 1
 offset_left = 263.0
-offset_top = 184.0
+offset_top = 182.0
 offset_right = 594.0
-offset_bottom = 523.0
+offset_bottom = 521.0
 texture = ExtResource("9_yaehf")
 script = ExtResource("14_1u8w0")
 all_dialoge = "!Image yay
@@ -222,8 +240,8 @@ Dang That Sucks That It Wont Be A Suprise
 Well The SHOCKING FOURTH As I Promised
 !Image hmmm
 Wait No I Just Had A Thought
- There IS Still A Secret
- Just The State Of The Existance Of A Secret I Known
+There IS Still A Secret
+Just The State Of The Existance Of A Secret I Known
 Wait Actually I Think I Said That At The Start
 !Image sad
 Yea I Think I Did Oops My Bad
@@ -302,26 +320,73 @@ offset_bottom = 708.75
 
 [node name="row 2" type="Node2D" parent="."]
 
+[node name="CaveFull" type="Sprite2D" parent="row 2"]
+position = Vector2(1869, 1005)
+scale = Vector2(0.462897, 0.441489)
+texture = ExtResource("23_xuqvo")
+
 [node name="arrow_out_of_vault" type="TextureRect" parent="row 2"]
-offset_left = 3567.0
-offset_top = 1210.0
-offset_right = 3870.0
-offset_bottom = 1505.0
-rotation = 3.14159
+offset_left = 3510.0
+offset_top = 1120.0
+offset_right = 3813.0
+offset_bottom = 1415.0
+scale = Vector2(1, -1)
 texture = ExtResource("23_0odxb")
 expand_mode = 1
 script = ExtResource("6_272bh")
 explodeable = false
 
 [node name="temp doomsday device" type="TextureRect" parent="row 2"]
-offset_left = 176.0
-offset_top = 1048.0
-offset_right = 312.0
-offset_bottom = 1168.0
+offset_left = 163.0
+offset_top = 925.0
+offset_right = 299.0
+offset_bottom = 1045.0
 texture = ExtResource("24_a6jrf")
 expand_mode = 1
 script = ExtResource("25_xuqvo")
 explodeable = false
+
+[node name="jerboa" parent="row 2" instance=ExtResource("4_7mycd")]
+offset_left = 1853.0
+offset_top = 879.0
+offset_right = 2194.0
+offset_bottom = 1038.0
+texture = ExtResource("28_4k2k6")
+all_dialoge = "!Image side
+
+!Image front
+...
+h e l l o
+...
+!Image front_lean
+...
+!Image front
+i   h a v e   s o m e t h i n g    t o   s h o w   y o u
+!Image side
+
+!Image back
+
+...
+
+!Image front
+p l e a s e   d i s r e g a r d
+i   c o u l d   n o t   f i n d   i t
+...
+~ LOOP POINT
+!Image side
+
+!Image side_lean
+
+!Image front
+i   a m   v e r y   s o r r y
+!GoTo LOOP POINT"
+images = Dictionary[StringName, Texture2D]({
+&"back": ExtResource("32_b1qrp"),
+&"front": ExtResource("31_facbu"),
+&"front_lean": ExtResource("30_ok6jj"),
+&"side": ExtResource("28_4k2k6"),
+&"side_lean": ExtResource("29_0rl1p")
+})
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(600, 320)

@@ -253,6 +253,7 @@ stream = ExtResource("6_ih7ff")
 
 [node name="into vault arrow" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 79.0
 offset_top = 188.0
 offset_right = 382.0
