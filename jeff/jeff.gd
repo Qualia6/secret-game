@@ -4,6 +4,10 @@ func _clicked() -> void:
 	if INVENTORY.selected_item_id == &"key":
 		goto("HIT BY KEY")
 		GLOBAL.update_flag(&"jeff_killed_by_key", true)
+		GLOBAL.update_flag(&"jeff_dead", true)
 		return
 	
 	super._clicked()
+
+func _about_to_explode():
+	GLOBAL.update_flag(&"jeff_dead", true)

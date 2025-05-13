@@ -6,16 +6,18 @@ class_name NPC extends Clickable
 var markers: Dictionary[String, int] = {}
 var dialoge: PackedStringArray
 var current_dialoge: int = 0
+var executions: Dictionary[String, Callable]
 
 
 func goto(marked: String) -> void:
 	current_dialoge = markers[marked]
 	execute_dialoge()
 
+var waiting_for_exec: bool = false
 
 func execute_dialoge():
 	if current_dialoge >= len(dialoge): 
-		$Label.text = ""
+		say("")
 		return
 	
 	if dialoge[current_dialoge].begins_with("~"):
@@ -23,8 +25,23 @@ func execute_dialoge():
 		execute_dialoge()
 		return
 	
+	if dialoge[current_dialoge].begins_with("!Halt"):
+		say("")
+		current_dialoge -= 1
+		return
+	
 	if dialoge[current_dialoge].begins_with("!GoTo "):
 		goto(dialoge[current_dialoge].right(-6))
+		return
+	
+	if dialoge[current_dialoge].begins_with("!Exec "):
+		var call_result = executions[dialoge[current_dialoge].right(-6)].call()
+		if call_result is Signal:
+			waiting_for_exec = true
+			await call_result 
+			waiting_for_exec = false
+		current_dialoge += 1
+		execute_dialoge()
 		return
 	
 	if dialoge[current_dialoge].begins_with("!FlagTrue "):
@@ -55,7 +72,10 @@ func execute_dialoge():
 		execute_dialoge()
 		return
 	
-	$Label.text = dialoge[current_dialoge]
+	say(dialoge[current_dialoge])
+
+func say(text: String):
+	$Label.text = text
 
 func _updated(): pass
 
@@ -67,9 +87,12 @@ func parse_all_dialoge():
 		if d.begins_with("~"):
 			markers.set(d.right(-2), current_line)
 		current_line += 1
-	print(markers)
+
+func _get_executions() -> Dictionary[String, Callable]:
+	return {}
 
 func _ready() -> void:
+	executions = _get_executions()
 	parse_all_dialoge()
 	current_dialoge = 0
 	execute_dialoge()
@@ -77,5 +100,6 @@ func _ready() -> void:
 
 func _clicked() -> void:
 	if current_dialoge >= len(dialoge): return
+	if waiting_for_exec: return
 	current_dialoge += 1
 	execute_dialoge()

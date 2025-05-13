@@ -1,0 +1,77 @@
+extends NPC
+
+func _get_executions() -> Dictionary[String, Callable]:
+	return {
+		"appear": appear,
+		"leave": leave,
+		"appear_angry": appear_angry,
+		"leave_angry": leave_angry,
+		"game_over": game_over
+	}
+
+func appear() -> Signal:
+	visible = true
+	say("")
+	animation_t = 0.
+	animation_state = ANIMATION_STATE.APPEAR
+	return done_moving
+
+func leave() -> Signal:
+	visible = true
+	say("")
+	animation_t = 0.
+	animation_state = ANIMATION_STATE.LEAVE
+	return done_moving
+
+func appear_angry() -> Signal:
+	visible = true
+	say("")
+	animation_t = 0.
+	animation_state = ANIMATION_STATE.APPEAR_ANGRY
+	return done_moving
+
+func leave_angry() -> Signal:
+	visible = true
+	say("")
+	animation_t = 0.
+	animation_state = ANIMATION_STATE.LEAVE_ANGRY
+	return done_moving
+
+func game_over():
+	get_tree().change_scene_to_file("res://game_over.tscn")
+
+signal done_moving
+
+enum ANIMATION_STATE {NONE, APPEAR, APPEAR_ANGRY, LEAVE, LEAVE_ANGRY}
+var animation_state: ANIMATION_STATE = ANIMATION_STATE.NONE
+var animation_t: float = 1.
+
+
+func _process(delta: float) -> void:
+	if animation_state == ANIMATION_STATE.NONE: return
+	animation_t += delta * 0.5
+	if animation_t >= 1.:
+		animation_t = 1.
+		done_moving.emit()
+		if animation_state == ANIMATION_STATE.LEAVE or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
+			visible = false
+	var verticality_t = 1. - animation_t if animation_state == ANIMATION_STATE.APPEAR or animation_state == ANIMATION_STATE.APPEAR_ANGRY else animation_t
+	position = Vector2(-195, -85 + verticality_t * 500)
+	if animation_state == ANIMATION_STATE.APPEAR_ANGRY or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
+		if animation_t != 1.:
+			position += Vector2(randf()-0.5,randf()-0.5)*80.
+	if animation_t >= 1.:
+		animation_state = ANIMATION_STATE.NONE
+
+var arrive: int = 0
+
+func _input(event: InputEvent) -> void:
+	if not event.is_action_pressed("cave money"): return
+	if visible: return
+	if animation_state != ANIMATION_STATE.NONE: return
+	arrive += 1
+	match arrive:
+		1: goto("ARRIVE FIRST")
+		2: goto("ARRIVE SECOND")
+		3: goto("ARRIVE THIRD")
+		_: goto("ARRIVE FOURTH")

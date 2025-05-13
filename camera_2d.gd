@@ -27,3 +27,6 @@ func _on_vault_travel_through_vault() -> void:
 
 func _on_arrow_out_of_vault_clicked() -> void:
 	position.y = 320
+
+func _on_arrow_into_hole_clicked() -> void:
+	position.y = 1000
