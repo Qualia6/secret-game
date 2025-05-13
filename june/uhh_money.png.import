@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfluraqjblnfb"
-path="res://.godot/imported/doom_day_device_temp.png-a8680e09815006e3fb45039f17d52e19.ctex"
+uid="uid://dt121vheh8bam"
+path="res://.godot/imported/uhh_money.png-5b1f946496236a711f18621b1b455750.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dooms day device/doom_day_device_temp.png"
-dest_files=["res://.godot/imported/doom_day_device_temp.png-a8680e09815006e3fb45039f17d52e19.ctex"]
+source_file="res://june/uhh_money.png"
+dest_files=["res://.godot/imported/uhh_money.png-5b1f946496236a711f18621b1b455750.ctex"]
 
 [params]
 

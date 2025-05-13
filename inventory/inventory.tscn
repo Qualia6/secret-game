@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnavoepbtdcge"]
+[gd_scene load_steps=20 format=3 uid="uid://dnavoepbtdcge"]
 
 [ext_resource type="Script" uid="uid://dr03jp8cy6838" path="res://inventory/inventory.gd" id="1_0dv6l"]
 [ext_resource type="Texture2D" uid="uid://tifbwse13ai1" path="res://inventory/r.png" id="1_lhcfm"]
@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://iexwstieq6ud" path="res://inventory/b.png" id="4_f2511"]
 [ext_resource type="Texture2D" uid="uid://blgi4oyq146xo" path="res://inventory/inventory.png" id="5_rsmrt"]
 [ext_resource type="Texture2D" uid="uid://chs88bf1uvmep" path="res://items/key.png" id="7_022t5"]
+[ext_resource type="Texture2D" uid="uid://cg8ltt5n3g47w" path="res://items/money.png" id="7_uyjf6"]
 [ext_resource type="Texture2D" uid="uid://cj5waicchyxh7" path="res://inventory/empty.png" id="8_022t5"]
 [ext_resource type="Script" uid="uid://cb7e873cyx1x3" path="res://items/signal_on_click.gd" id="8_locsq"]
-[ext_resource type="Texture2D" uid="uid://dfluraqjblnfb" path="res://dooms day device/doom_day_device_temp.png" id="9_locsq"]
+[ext_resource type="PackedScene" uid="uid://bxxoqeuwm5odp" path="res://items/hand gun/gun.tscn" id="10_uyjf6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_022t5"]
 shader = ExtResource("3_rsmrt")
@@ -127,7 +128,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Destroy:position")
+tracks/8/path = NodePath("Gun:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -135,6 +136,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(597, 395)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Money:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(758, 181)]
 }
 
 [sub_resource type="Animation" id="Animation_inc80"]
@@ -241,14 +254,26 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Destroy:position")
+tracks/8/path = NodePath("Gun:position")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.02165, 2.04797, 3.01364, 4.04928, 5.00096, 6.00861, 7.02093, 8.0146, 9.02408, 10.0084, 11.0207),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(597, 395), Vector2(567, 492), Vector2(771, 488), Vector2(856, 358), Vector2(892, 528), Vector2(470, 506), Vector2(369, 399), Vector2(569, 422), Vector2(646, 535), Vector2(373, 491), Vector2(295, 520), Vector2(711, 511)]
+"values": [Vector2(597, 395), Vector2(519, 510), Vector2(619, 541), Vector2(727, 494), Vector2(796, 487), Vector2(698, 452)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Money:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.03415, 1.99118, 4.00689, 4.94639, 6.00508, 7.0574, 8.0635, 9.03806, 10.0161, 11.0257),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(758, 181), Vector2(860, 166), Vector2(982, 238), Vector2(511, 117), Vector2(512, 91), Vector2(790, 158), Vector2(994, 114), Vector2(973, 340), Vector2(954, 464), Vector2(1021, 283), Vector2(894, 125)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8eab2"]
@@ -297,33 +322,60 @@ position = Vector2(215.375, 41.5)
 scale = Vector2(1.51015, 2.93103)
 texture = ExtResource("5_rsmrt")
 
+[node name="Money" type="Node2D" parent="."]
+position = Vector2(758, 181)
+scale = Vector2(0.5, 0.5)
+
+[node name="second_money" type="Sprite2D" parent="Money"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(42, 58)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_uyjf6")
+
+[node name="money" type="TextureRect" parent="Money"]
+offset_left = -298.0
+offset_top = -148.0
+offset_right = 915.0
+offset_bottom = 450.0
+scale = Vector2(0.5, 0.5)
+tooltip_text = "click item to hold it!"
+texture = ExtResource("7_uyjf6")
+script = ExtResource("8_locsq")
+metadata/_edit_use_anchors_ = true
+
 [node name="Key" type="Node2D" parent="."]
 position = Vector2(342, 274)
-scale = Vector2(0.40678, 0.40678)
+scale = Vector2(0.5, 0.5)
 
 [node name="key" type="TextureRect" parent="Key"]
-offset_left = -478.325
-offset_top = -234.359
-offset_right = 465.675
-offset_bottom = 355.641
+offset_left = -344.0
+offset_top = -182.0
+offset_right = 600.0
+offset_bottom = 408.0
+scale = Vector2(0.7, 0.7)
 tooltip_text = "click item to hold it!"
 texture = ExtResource("7_022t5")
 script = ExtResource("8_locsq")
 metadata/_edit_use_anchors_ = true
 
-[node name="Destroy" type="Node2D" parent="."]
+[node name="Gun" type="Node2D" parent="."]
 position = Vector2(597, 395)
-scale = Vector2(0.40678, 0.40678)
+scale = Vector2(0.5, 0.5)
 
-[node name="destroy" type="TextureRect" parent="Destroy"]
-offset_left = -150.854
-offset_top = -121.539
-offset_right = 169.146
-offset_bottom = 139.461
+[node name="gun asset" parent="Gun" instance=ExtResource("10_uyjf6")]
+unique_name_in_owner = true
+scale = Vector2(1.655, 1.655)
+
+[node name="hitbox" type="Control" parent="Gun"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -291.0
+offset_top = -198.0
+offset_right = 277.0
+offset_bottom = 216.0
 tooltip_text = "click item to hold it!"
-texture = ExtResource("9_locsq")
 script = ExtResource("8_locsq")
-metadata/_edit_use_anchors_ = true
 
 [node name="Empty" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -338,5 +390,6 @@ libraries = {
 }
 autoplay = "spinnnyyyyy"
 
+[connection signal="clicked" from="Money/money" to="." method="_on_item_clicked" binds= [&"money"]]
 [connection signal="clicked" from="Key/key" to="." method="_on_item_clicked" binds= [&"key"]]
-[connection signal="clicked" from="Destroy/destroy" to="." method="_on_item_clicked" binds= [&"destroy"]]
+[connection signal="clicked" from="Gun/hitbox" to="." method="_on_item_clicked" binds= [&"gun"]]

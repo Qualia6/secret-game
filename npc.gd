@@ -8,6 +8,7 @@ var dialoge: PackedStringArray
 var current_dialoge: int = 0
 var executions: Dictionary[String, Callable]
 
+var register
 
 func goto(marked: String) -> void:
 	current_dialoge = markers[marked]
@@ -34,6 +35,12 @@ func execute_dialoge():
 		goto(dialoge[current_dialoge].right(-6))
 		return
 	
+	if dialoge[current_dialoge].begins_with("!Load "):
+		register = dialoge[current_dialoge].right(-6)
+		current_dialoge += 1
+		execute_dialoge()
+		return
+	
 	if dialoge[current_dialoge].begins_with("!Exec "):
 		var call_result = executions[dialoge[current_dialoge].right(-6)].call()
 		if call_result is Signal:
@@ -44,14 +51,71 @@ func execute_dialoge():
 		execute_dialoge()
 		return
 	
+	if dialoge[current_dialoge].begins_with("!IfExec "):
+		var call_result = executions[dialoge[current_dialoge].right(-8)].call()
+		if call_result:
+			current_dialoge += 1
+		else:
+			current_dialoge += 2
+		execute_dialoge()
+		return
+	
 	if dialoge[current_dialoge].begins_with("!FlagTrue "):
 		GLOBAL.update_flag(StringName(dialoge[current_dialoge].right(-10)), true)
 		current_dialoge += 1
 		execute_dialoge()
 		return
 	
+	if dialoge[current_dialoge].begins_with("!FlagInc "):
+		var flag_name : StringName = StringName(dialoge[current_dialoge].right(-9))
+		GLOBAL.update_flag(flag_name, GLOBAL.flags[flag_name] + 1)
+		current_dialoge += 1
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!FlagDec "):
+		var flag_name : StringName = StringName(dialoge[current_dialoge].right(-9))
+		GLOBAL.update_flag(flag_name, GLOBAL.flags[flag_name] - 1)
+		current_dialoge += 1
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!FlagSetFloat "):
+		var flag_name : StringName = StringName(dialoge[current_dialoge].right(-14))
+		GLOBAL.update_flag(flag_name, register)
+		current_dialoge += 1
+		execute_dialoge()
+		return
+	
 	if dialoge[current_dialoge].begins_with("!IfFlag "):
 		if GLOBAL.flags[StringName(dialoge[current_dialoge].right(-8))]:
+			current_dialoge += 1
+		else:
+			current_dialoge += 2
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!If > "):
+		var flag_value = GLOBAL.flags[StringName(dialoge[current_dialoge].right(-6))]
+		if flag_value > float(register):
+			current_dialoge += 1
+		else:
+			current_dialoge += 2
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!If >= "):
+		var flag_value = GLOBAL.flags[StringName(dialoge[current_dialoge].right(-7))]
+		if flag_value >= float(register):
+			current_dialoge += 1
+		else:
+			current_dialoge += 2
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!If == "):
+		var flag_value = GLOBAL.flags[StringName(dialoge[current_dialoge].right(-7))]
+		if flag_value == float(register):
 			current_dialoge += 1
 		else:
 			current_dialoge += 2
@@ -75,7 +139,7 @@ func execute_dialoge():
 	say(dialoge[current_dialoge])
 
 func say(text: String):
-	$Label.text = text
+	$Label.text = text.replace("\\n", "\n")
 
 func _updated(): pass
 
