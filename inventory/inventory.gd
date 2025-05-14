@@ -40,7 +40,7 @@ func _updated():
 	$Empty.visible = items == 0
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory"):
+	if event.is_action_pressed("inventory") and not GLOBAL.flags[&"game_end"]:
 		visible = not visible
 		if not visible:
 			$animation.pause()

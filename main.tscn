@@ -1,15 +1,12 @@
-[gd_scene load_steps=68 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=64 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cfyw3rxlkneoi" path="res://world/grass.jpg" id="1_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://world/1bcsjba9.png" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://bo7gp7h8hxtbn" path="res://taxi/sunset.jpg" id="1_ruth0"]
+[ext_resource type="PackedScene" uid="uid://cnejodch18p0d" path="res://taxi/row_0.tscn" id="1_e71vb"]
 [ext_resource type="Texture2D" uid="uid://duxqdv7k2g8ax" path="res://world/q7ynqg64.png" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cp2csfllnl7eb" path="res://world/hole.png" id="2_ok6jj"]
-[ext_resource type="Texture2D" uid="uid://by87pchggek4" path="res://taxi/sheet.png" id="2_rm4vd"]
-[ext_resource type="Texture2D" uid="uid://cmptn3nfkpydj" path="res://taxi/road.jpg" id="3_pjyto"]
 [ext_resource type="PackedScene" uid="uid://5nam6awxin16" path="res://npc.tscn" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bbn21hxal74jn" path="res://world/b4asm63y.png" id="4_272bh"]
-[ext_resource type="Texture2D" uid="uid://dl0g4taegelsn" path="res://taxi/sign.png" id="4_sm6fg"]
 [ext_resource type="Texture2D" uid="uid://blwrbfphq41n0" path="res://june/stand.png" id="5_074og"]
 [ext_resource type="Texture2D" uid="uid://47roib2wp13a" path="res://jeff/hmmm.png" id="5_ycdy4"]
 [ext_resource type="Script" uid="uid://bxpxwh66h55lo" path="res://camera_2d.gd" id="6_7mycd"]
@@ -59,10 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://bxxoqeuwm5odp" path="res://items/hand gun/gun.tscn" id="40_wnkbs"]
 [ext_resource type="Texture2D" uid="uid://cg8ltt5n3g47w" path="res://items/money.png" id="54_4w656"]
 [ext_resource type="Script" uid="uid://ds1rnw3mef6o6" path="res://world/money.gd" id="55_e71vb"]
-[ext_resource type="Texture2D" uid="uid://00hjbv0cv2rn" path="res://jerboa/hat.png" id="60_b17eg"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ntx8l"]
-font_size = 43
+[ext_resource type="AudioStream" uid="uid://0kuxf51lklou" path="res://m/fanfare-1-276819.mp3" id="56_rnkwl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_abqjc"]
 resource_local_to_scene = true
@@ -92,82 +86,8 @@ font_size = 32
 
 [node name="Node2D" type="Node2D"]
 
-[node name="row 0" type="Node2D" parent="."]
+[node name="row 0" parent="." instance=ExtResource("1_e71vb")]
 position = Vector2(0, -768)
-
-[node name="Sunset" type="Sprite2D" parent="row 0"]
-texture_filter = 2
-position = Vector2(1812, 194)
-scale = Vector2(0.888, 0.284)
-texture = ExtResource("1_ruth0")
-
-[node name="taxi" type="Sprite2D" parent="row 0"]
-z_index = 9
-texture_filter = 1
-position = Vector2(1583, 366)
-scale = Vector2(1.265, 1.265)
-texture = ExtResource("2_rm4vd")
-vframes = 2
-
-[node name="background" type="Sprite2D" parent="row 0/taxi"]
-z_index = -1
-texture_filter = 1
-texture = ExtResource("2_rm4vd")
-vframes = 2
-frame = 1
-
-[node name="Road" type="Sprite2D" parent="row 0"]
-position = Vector2(1797, 549)
-scale = Vector2(2.385, 0.57)
-texture = ExtResource("3_pjyto")
-
-[node name="Sign" type="Sprite2D" parent="row 0"]
-texture_filter = 1
-position = Vector2(642, 292)
-scale = Vector2(1.525, 1.525)
-texture = ExtResource("4_sm6fg")
-
-[node name="Label" type="Label" parent="row 0"]
-offset_left = 561.0
-offset_top = 136.0
-offset_right = 771.0
-offset_bottom = 233.0
-text = "secret"
-label_settings = SubResource("LabelSettings_ntx8l")
-
-[node name="taxi_jerboa" parent="row 0" instance=ExtResource("4_7mycd")]
-offset_left = 2139.0
-offset_top = 479.0
-offset_right = 2492.0
-offset_bottom = 643.0
-texture = ExtResource("60_b17eg")
-flip_h = true
-all_dialoge = "!Image hat
-h i
-!FlagFalse has_key
-i   t o o k   t h e   k e y
-n e c e s s a r y\\nf o r   c a r
-~ LOOP POINT
-!FlagTrue jerboa_up
-g e t   j e f f   a n d\\nj u n e   u p   h e r e
-f o r   a   d o l l a r
-i   w i l l   b r i n g\\ne v e r y o n e
-t o   s e c r e t
-!GoTo LOOP POINT"
-images = Dictionary[StringName, Texture2D]({
-&"hat": ExtResource("60_b17eg")
-})
-
-[node name="arrow_back_down" type="TextureRect" parent="row 0"]
-offset_left = 316.0
-offset_top = 353.0
-offset_right = 619.0
-offset_bottom = 648.0
-rotation = 2.76321
-scale = Vector2(0.84729, -0.650978)
-texture = ExtResource("23_0odxb")
-expand_mode = 1
-script = ExtResource("39_abqjc")
 
 [node name="row 1" type="Node2D" parent="."]
 
@@ -445,10 +365,10 @@ script = ExtResource("6_272bh")
 [node name="jeff" parent="row 1" instance=ExtResource("4_7mycd")]
 z_index = 1
 texture_filter = 1
-offset_left = 246.0
-offset_top = 172.0
-offset_right = 577.0
-offset_bottom = 511.0
+offset_left = 233.0
+offset_top = 177.0
+offset_right = 564.0
+offset_bottom = 516.0
 texture = ExtResource("9_yaehf")
 script = ExtResource("14_1u8w0")
 respawn_location_1 = Vector2(906, 500)
@@ -474,7 +394,7 @@ THIRD: I Have Been Told That There Is A Secret Some Where Around Here
 !Image hmmm
 I Wonder Where It Could Be
 I Guess The Fact That There Is A Secret Isn't A Secret Anymore
-Or Actually The Game Jam Has The Theme Of Secret So I Guess
+Or Actually This Game Is Named Super Secret So I Guess
 I Guess That It Is Pretty Obvious That There Is A Secret
 !Image sad
 Dang That Sucks That It Wont Be A Suprise
@@ -1311,6 +1231,9 @@ images = Dictionary[StringName, Texture2D]({
 })
 explodeable = false
 
+[node name="sound" type="AudioStreamPlayer2D" parent="Camera2D/m"]
+stream = ExtResource("56_rnkwl")
+
 [node name="Inventory" parent="Camera2D" instance=ExtResource("22_ryguw")]
 visible = false
 z_index = 10
@@ -1367,7 +1290,8 @@ text = "your screen is almost as wide as your mother
           lol"
 label_settings = SubResource("LabelSettings_qnost")
 
-[connection signal="clicked" from="row 0/arrow_back_down" to="Camera2D" method="_on_arrow_back_down_clicked"]
+[connection signal="arrow_back_down" from="row 0" to="Camera2D" method="_on_row_0_arrow_back_down"]
+[connection signal="fix_camera_position" from="row 0" to="Camera2D" method="_on_row_0_fix_camera_position"]
 [connection signal="clicked" from="row 1/arrow_into_hole" to="Camera2D" method="_on_arrow_into_hole_clicked"]
 [connection signal="travel_through_vault" from="row 1/Node2D3/vault" to="Camera2D" method="_on_vault_travel_through_vault"]
 [connection signal="utilize_hole" from="row 1/CeillingHole" to="Camera2D" method="_on_ceilling_hole_utilize_hole"]

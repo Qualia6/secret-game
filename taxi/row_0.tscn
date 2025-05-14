@@ -1,0 +1,963 @@
+[gd_scene load_steps=50 format=3 uid="uid://cnejodch18p0d"]
+
+[ext_resource type="Script" uid="uid://4uh3ivhucjhm" path="res://taxi/row_0.gd" id="1_rqxbc"]
+[ext_resource type="Texture2D" uid="uid://bo7gp7h8hxtbn" path="res://taxi/sunset.jpg" id="2_3qwir"]
+[ext_resource type="Shader" uid="uid://ye13f7nx1s4p" path="res://alpha.gdshader" id="3_rw4k1"]
+[ext_resource type="Texture2D" uid="uid://by87pchggek4" path="res://taxi/sheet.png" id="3_v2dnu"]
+[ext_resource type="Texture2D" uid="uid://kihidlfepqwe" path="res://m/m0003.png" id="4_ns1h0"]
+[ext_resource type="Texture2D" uid="uid://dl0g4taegelsn" path="res://taxi/sign.png" id="5_ns1h0"]
+[ext_resource type="PackedScene" uid="uid://5nam6awxin16" path="res://npc.tscn" id="6_naeru"]
+[ext_resource type="Texture2D" uid="uid://bteq6bebkma1k" path="res://jeff/wave.png" id="7_7asrt"]
+[ext_resource type="Texture2D" uid="uid://ca0jw7nylpmaf" path="res://jeff/smile.png" id="8_te3xo"]
+[ext_resource type="Texture2D" uid="uid://bwcogln5sjiiw" path="res://jeff/sad.png" id="9_ep0j5"]
+[ext_resource type="Texture2D" uid="uid://47roib2wp13a" path="res://jeff/hmmm.png" id="10_gueiu"]
+[ext_resource type="Texture2D" uid="uid://cx2ko6w6qolv0" path="res://jeff/wow.png" id="11_f7ggr"]
+[ext_resource type="Texture2D" uid="uid://dooyuiq7ckvob" path="res://jeff/yay.png" id="12_d5snt"]
+[ext_resource type="Texture2D" uid="uid://blwrbfphq41n0" path="res://june/stand.png" id="13_y1s7n"]
+[ext_resource type="Texture2D" uid="uid://hvmaey4fl31y" path="res://june/aaa.png" id="14_lle60"]
+[ext_resource type="Texture2D" uid="uid://eeggkph6ri8t" path="res://june/evil.png" id="15_ig245"]
+[ext_resource type="Texture2D" uid="uid://c6wnve7ahqo5c" path="res://june/hehe.png" id="16_i6bp6"]
+[ext_resource type="Texture2D" uid="uid://bsjfr304xo8di" path="res://june/uhh.png" id="17_1x8oq"]
+[ext_resource type="Texture2D" uid="uid://dha06jhcfgs4f" path="res://june/yay.png" id="18_t1sg5"]
+[ext_resource type="Texture2D" uid="uid://00hjbv0cv2rn" path="res://jerboa/hat.png" id="19_ujmds"]
+[ext_resource type="Script" uid="uid://i67hkfn1i0mj" path="res://taxi_jerboa.gd" id="20_lnb5t"]
+[ext_resource type="Texture2D" uid="uid://dwsqc7hwoujrr" path="res://jerboa/hat_lean.png" id="21_usb5y"]
+[ext_resource type="Texture2D" uid="uid://bghmickhvwkcn" path="res://arrow.png" id="22_n0m5t"]
+[ext_resource type="Script" uid="uid://dmsp48p3obyt6" path="res://basic_clickable.gd" id="23_235pq"]
+[ext_resource type="Shader" uid="uid://spe8brabwhfk" path="res://taxi/road.gdshader" id="24_v2dnu"]
+[ext_resource type="Texture2D" uid="uid://b5cihbddvwv7y" path="res://taxi/road_manipulated.jpg" id="25_rw4k1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_naeru"]
+shader = ExtResource("3_rw4k1")
+shader_parameter/a = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ns1h0"]
+shader = ExtResource("24_v2dnu")
+shader_parameter/tex = ExtResource("25_rw4k1")
+shader_parameter/a = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ntx8l"]
+font_size = 43
+
+[sub_resource type="Animation" id="Animation_rqxbc"]
+resource_name = "enter car"
+length = 2.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jeff:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("jeff:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 1.25, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1369, 171), Vector2(789.37, 183.037), Vector2(743, 184)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("jeff:size")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(331, 339), Vector2(179, 183), Vector2(202, 207)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("jerboa:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("jerboa:size")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(353, 164), Vector2(181, 84)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("jerboa:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1530, 479), Vector2(1035, 492), Vector2(877, 483), Vector2(903, 234)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("jerboa:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("june:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-2, 0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("june:size")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.5, 2, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(332, 366), Vector2(216, 237), Vector2(212, 234)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("june:position")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2, 2.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1870, 163), Vector2(1325, 218), Vector2(849, 209), Vector2(800, 167)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("june:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3qwir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jeff:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("jeff:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1369, 171)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("jeff:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(331, 339)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("jerboa:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("jerboa:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(353, 164)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("jerboa:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1530, 479)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("jerboa:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("june:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("june:size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(332, 366)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("june:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1870, 163)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("june:flip_h")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("road:material:shader_parameter/a")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("taxi:frame")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sign:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1798.41, 294.6)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Sign:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Sunset:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1807, 25.4198)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("m:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("m:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3391, -5)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Title:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("name:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("name:label_settings:font_color")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Title:label_settings:font_color")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Title:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(659, -218.885)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("name:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1004, -64)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Title:text")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Super Secret"]
+}
+
+[sub_resource type="Animation" id="Animation_v2dnu"]
+resource_name = "start_drive"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("road:material:shader_parameter/a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("taxi:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sign:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.4),
+"transitions": PackedFloat32Array(2, 1, 1),
+"update": 0,
+"values": [Vector2(1798.41, 294.6), Vector2(635, 294.6), Vector2(-324, 295)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sign:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rw4k1"]
+resource_name = "drive"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("road:material:shader_parameter/a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("taxi:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_7asrt"]
+resource_name = "big_drive"
+length = 90.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sunset:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 90),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1807, 25.4198), Vector2(-50.9999, 25.42)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("m:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(13, 47, 50, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("m:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(13, 47, 50, 90),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3391, -5), Vector2(-592, -5), Vector2(3391, -5), Vector2(-592, -5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Title:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("name:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("name:label_settings:font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.5, 5.5, 7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Title:label_settings:font_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4, 5, 7, 8, 11, 12, 14, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Title:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4, 5, 7, 8, 11, 12, 14, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(659, -218.885), Vector2(659, -311), Vector2(659, -311), Vector2(659, -388.105), Vector2(425.835, -156), Vector2(425.835, -234), Vector2(425.835, -234), Vector2(425.835, -377.965)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("name:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(4.5, 5.5, 7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1004, 8), Vector2(1004, -64), Vector2(1004, -64), Vector2(1004, -156.845)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Title:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Super Secret", "Thanks for Playing!"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3qwir"]
+_data = {
+&"RESET": SubResource("Animation_3qwir"),
+&"big_drive": SubResource("Animation_7asrt"),
+&"drive": SubResource("Animation_rw4k1"),
+&"enter car": SubResource("Animation_rqxbc"),
+&"start_drive": SubResource("Animation_v2dnu")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_rw4k1"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ns1h0"]
+animation = &"big_drive"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_naeru"]
+animation = &"drive"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7asrt"]
+graph_offset = Vector2(-620, -98.6667)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_rw4k1")
+nodes/Add2/position = Vector2(144.393, 163.753)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_naeru")
+nodes/Animation/position = Vector2(-120, 0)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ns1h0")
+"nodes/Animation 2/position" = Vector2(-87.12, 250.873)
+nodes/output/position = Vector2(373.333, 186.667)
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_te3xo"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ep0j5"]
+animation = &"enter car"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gueiu"]
+animation = &"start_drive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f7ggr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d5snt"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y1s7n"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lle60"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"begin"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ig245"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_7asrt")
+states/BlendTree/position = Vector2(723, 84.6667)
+states/End/position = Vector2(868, 68)
+states/RESET/node = SubResource("AnimationNodeAnimation_te3xo")
+states/RESET/position = Vector2(222.333, 62.6667)
+states/Start/position = Vector2(42, 53.9753)
+"states/enter car/node" = SubResource("AnimationNodeAnimation_ep0j5")
+"states/enter car/position" = Vector2(379.667, 88.6667)
+states/start_drive/node = SubResource("AnimationNodeAnimation_gueiu")
+states/start_drive/position = Vector2(565, 89.3333)
+transitions = ["enter car", "start_drive", SubResource("AnimationNodeStateMachineTransition_f7ggr"), "start_drive", "BlendTree", SubResource("AnimationNodeStateMachineTransition_d5snt"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_y1s7n"), "RESET", "enter car", SubResource("AnimationNodeStateMachineTransition_lle60")]
+graph_offset = Vector2(-367, -100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rw4k1"]
+font_size = 191
+font_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ns1h0"]
+font_size = 86
+font_color = Color(1, 1, 1, 0)
+
+[node name="row 0" type="Node2D"]
+script = ExtResource("1_rqxbc")
+
+[node name="Sunset" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 2
+position = Vector2(1807, 25.4198)
+scale = Vector2(0.888, 0.49847)
+texture = ExtResource("2_3qwir")
+
+[node name="m" type="Sprite2D" parent="."]
+visible = false
+z_index = -5
+material = SubResource("ShaderMaterial_naeru")
+position = Vector2(3391, -5)
+scale = Vector2(2.36227, 2.36227)
+texture = ExtResource("4_ns1h0")
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(960, 366)
+scale = Vector2(1.265, 1.265)
+texture = ExtResource("3_v2dnu")
+vframes = 4
+frame = 1
+
+[node name="taxi" type="Sprite2D" parent="."]
+z_index = 9
+texture_filter = 1
+position = Vector2(961, 366)
+scale = Vector2(1.265, 1.265)
+texture = ExtResource("3_v2dnu")
+vframes = 4
+
+[node name="road" type="ColorRect" parent="."]
+z_index = -5
+material = SubResource("ShaderMaterial_ns1h0")
+offset_left = -492.0
+offset_top = 444.0
+offset_right = 4156.0
+offset_bottom = 673.0
+
+[node name="Sign" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 1
+position = Vector2(1798.41, 294.6)
+scale = Vector2(1.525, 1.525)
+texture = ExtResource("5_ns1h0")
+
+[node name="Label" type="Label" parent="Sign"]
+offset_left = -53.1147
+offset_top = -102.295
+offset_right = 156.885
+offset_bottom = -5.29509
+scale = Vector2(0.656, 0.656)
+text = "secret"
+label_settings = SubResource("LabelSettings_ntx8l")
+
+[node name="june" parent="." instance=ExtResource("6_naeru")]
+texture_filter = 2
+offset_left = 1870.0
+offset_top = 163.0
+offset_right = 2202.0
+offset_bottom = 529.0
+texture = ExtResource("13_y1s7n")
+flip_h = true
+all_dialoge = "~ START
+!Image stand
+
+!Image uhh
+i am already starting to regret this
+!GoTo START
+~ SILENCE
+!Image stand"
+images = Dictionary[StringName, Texture2D]({
+&"aaa": ExtResource("14_lle60"),
+&"evil": ExtResource("15_ig245"),
+&"hehe": ExtResource("16_i6bp6"),
+&"stand": ExtResource("13_y1s7n"),
+&"uhh": ExtResource("17_1x8oq"),
+&"yay": ExtResource("18_t1sg5")
+})
+explodeable = false
+
+[node name="jerboa" parent="." instance=ExtResource("6_naeru")]
+offset_left = 1530.0
+offset_top = 479.0
+offset_right = 1883.0
+offset_bottom = 643.0
+texture = ExtResource("19_ujmds")
+flip_h = true
+script = ExtResource("20_lnb5t")
+all_dialoge = "!Image hat
+h i
+!FlagFalse has_key
+!Image hat_lean
+i   t o o k   t h e   k e y
+!Image hat
+n e c e s s a r y\\nf o r   c a r
+~ LOOP POINT
+!Image hat
+!FlagTrue jerboa_up
+g e t   j e f f   a n d\\nj u n e   u p   h e r e
+f o r   a   d o l l a r
+i   w i l l   b r i n g\\ne v e r y o n e
+!Image hat_lean
+t o   s e c r e t
+!GoTo LOOP POINT
+
+
+
+~ LETS ROLL
+p r o v i d e   d o l l a r
+a n d   w e   s h a l l\\nd e p a r t
+!IfHolding money
+!GoTo ACTUALLY ROLL
+!GoTo LETS ROLL
+
+
+
+~ ACTUALLY ROLL
+!FlagDec money
+l e t   u s\\nj o u r n e y
+!Image hat
+!Exec depart"
+images = Dictionary[StringName, Texture2D]({
+&"hat": ExtResource("19_ujmds"),
+&"hat_lean": ExtResource("21_usb5y")
+})
+
+[node name="jeff" parent="." instance=ExtResource("6_naeru")]
+texture_filter = 1
+offset_left = 1369.0
+offset_top = 171.0
+offset_right = 1700.0
+offset_bottom = 510.0
+texture = ExtResource("7_7asrt")
+all_dialoge = "~ START
+!Image wave
+
+!Image wow
+I'm excited!
+!GoTo START
+~ SILENCE
+!Image yay"
+images = Dictionary[StringName, Texture2D]({
+&"hmmm": ExtResource("10_gueiu"),
+&"sad": ExtResource("9_ep0j5"),
+&"smile": ExtResource("8_te3xo"),
+&"wave": ExtResource("7_7asrt"),
+&"wow": ExtResource("11_f7ggr"),
+&"yay": ExtResource("12_d5snt")
+})
+explodeable = false
+
+[node name="arrow_back_down" type="TextureRect" parent="."]
+offset_left = 316.0
+offset_top = 353.0
+offset_right = 619.0
+offset_bottom = 648.0
+rotation = 2.76321
+scale = Vector2(0.84729, -0.650978)
+texture = ExtResource("22_n0m5t")
+expand_mode = 1
+script = ExtResource("23_235pq")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3qwir")
+}
+
+[node name="animtree" type="AnimationTree" parent="."]
+deterministic = false
+tree_root = SubResource("AnimationNodeStateMachine_ig245")
+anim_player = NodePath("../anim")
+parameters/conditions/begin = false
+parameters/BlendTree/Add2/add_amount = 1.0
+
+[node name="Title" type="Label" parent="."]
+visible = false
+offset_left = 659.0
+offset_top = -218.885
+offset_right = 2408.0
+offset_bottom = 42.115
+text = "Super Secret"
+label_settings = SubResource("LabelSettings_rw4k1")
+
+[node name="name" type="Label" parent="."]
+visible = false
+offset_left = 1004.0
+offset_top = -64.0
+offset_right = 1455.0
+offset_bottom = 57.0
+text = "By Qualia"
+label_settings = SubResource("LabelSettings_ns1h0")
+
+[connection signal="departing_time" from="jerboa" to="." method="_on_jerboa_departing_time"]
+[connection signal="clicked" from="arrow_back_down" to="." method="_on_arrow_back_down_clicked"]

@@ -10,6 +10,7 @@ func _get_executions() -> Dictionary[String, Callable]:
 	}
 
 func appear() -> Signal:
+	$sound.play()
 	visible = true
 	say("")
 	animation_t = 0.
@@ -17,6 +18,7 @@ func appear() -> Signal:
 	return done_moving
 
 func leave() -> Signal:
+	$sound.play()
 	visible = true
 	say("")
 	animation_t = 0.
@@ -24,6 +26,7 @@ func leave() -> Signal:
 	return done_moving
 
 func appear_angry() -> Signal:
+	$sound.play()
 	visible = true
 	say("")
 	animation_t = 0.
@@ -31,6 +34,7 @@ func appear_angry() -> Signal:
 	return done_moving
 
 func leave_angry() -> Signal:
+	$sound.play()
 	visible = true
 	say("")
 	animation_t = 0.
@@ -53,13 +57,14 @@ func get_vertical_t() -> float:
 
 func _process(delta: float) -> void:
 	if animation_state == ANIMATION_STATE.NONE: return
-	animation_t += delta * 0.5
+	animation_t += delta * 0.35
 	if animation_t >= 1.:
 		animation_t = 1.
 		done_moving.emit()
 		if animation_state == ANIMATION_STATE.LEAVE or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
 			visible = false
 	var verticality_t = get_vertical_t()
+	$sound.volume_db = verticality_t * -20
 	position = Vector2(-195, -85 + verticality_t * 500)
 	if animation_state == ANIMATION_STATE.APPEAR_ANGRY or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
 		if animation_t != 1.:
@@ -71,6 +76,7 @@ var arrive: int = 0
 var imma_kill_you_now: bool = false
 
 func _input(event: InputEvent) -> void:
+	if GLOBAL.flags[&"game_end"]: return
 	if not event.is_action_pressed("cave money"): return
 	if visible: return
 	if animation_state != ANIMATION_STATE.NONE: return
