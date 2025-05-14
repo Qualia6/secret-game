@@ -37,18 +37,24 @@ func _on_jeff_clicked() -> void:
 		try_to_explode()
 		return
 	if GLOBAL.flags[&"recovery_center_destroied"]: return
-	if GLOBAL.flags[&"jeff_dead"]: jeff_recovered.emit()
+	if GLOBAL.flags[&"jeff_dead"]:
+		jeff_recovered.emit()
+		$chime.play()
 
 func _on_june_clicked() -> void:
 	if INVENTORY.selected_item_id == &"gun" and can_be_exploded(): 
 		try_to_explode()
 		return
 	if GLOBAL.flags[&"recovery_center_destroied"]: return
-	if GLOBAL.flags[&"june_dead"]: june_recovered.emit()
+	if GLOBAL.flags[&"june_dead"]:
+		june_recovered.emit()
+		$chime.play()
 
 func _on_jerboa_clicked() -> void:
 	if INVENTORY.selected_item_id == &"gun" and can_be_exploded(): 
 		try_to_explode()
 		return
 	if GLOBAL.flags[&"recovery_center_destroied"]: return
-	if GLOBAL.flags[&"jerboa_dead"]: jerboa_recovered.emit()
+	if GLOBAL.flags[&"jerboa_dead"]:
+		jerboa_recovered.emit()
+		$chime.play()

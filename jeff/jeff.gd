@@ -22,6 +22,7 @@ var already_go_upped: bool = false
 func _clicked() -> void:
 	if respawning or jumping: return
 	if INVENTORY.selected_item_id == &"key":
+		$hurt.play()
 		if already_respawned: save_line_as_previous()
 		goto("HIT BY KEY")
 		GLOBAL.update_flag(&"jeff_killed_by_key", true)
@@ -95,6 +96,7 @@ func save_line_as_previous():
 		#print("not saving ", current_dialoge)
 
 func jump():
+	$scream.play()
 	if GLOBAL.flags[&"jeff_jumped_before"]:
 		jump_height = 400
 		save_line_as_previous()

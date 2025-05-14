@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=68 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cfyw3rxlkneoi" path="res://world/grass.jpg" id="1_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://world/1bcsjba9.png" id="1_1bvp3"]
@@ -42,9 +42,11 @@
 [ext_resource type="Texture2D" uid="uid://dx3s18u1p7p14" path="res://jerboa/front.png" id="31_facbu"]
 [ext_resource type="Texture2D" uid="uid://dfx3544m1us0c" path="res://recovery center/recovery center top layer.png" id="31_qnost"]
 [ext_resource type="PackedScene" uid="uid://duflfgfrcmmcq" path="res://world/ceiling_tile.tscn" id="31_uypp3"]
+[ext_resource type="AudioStream" uid="uid://cr8u6i1jcn7ji" path="res://jeff/classic_hurt.mp3" id="31_vke2r"]
 [ext_resource type="Script" uid="uid://bg6hbkmf6hyj" path="res://recovery center/recovery_center.gd" id="31_wnkbs"]
 [ext_resource type="Texture2D" uid="uid://cbqthswj5smp3" path="res://jerboa/back.png" id="32_b1qrp"]
 [ext_resource type="Shader" uid="uid://de023xxgl01ey" path="res://world/manual_uvs.gdshader" id="32_blkrb"]
+[ext_resource type="AudioStream" uid="uid://dpsjev67khsyd" path="res://jeff/scream.ogg" id="32_ruth0"]
 [ext_resource type="PackedScene" uid="uid://bm2p1ggeilkoh" path="res://world/ceilling_hole.tscn" id="33_blkrb"]
 [ext_resource type="Script" uid="uid://b1uwfb8e7rv44" path="res://jerboa/jerboa.gd" id="33_gngh3"]
 [ext_resource type="Texture2D" uid="uid://b2g4rpae1ea4g" path="res://m/m0001.png" id="37_4lmeg"]
@@ -54,7 +56,9 @@
 [ext_resource type="Texture2D" uid="uid://n6w2cojr2tfr" path="res://m/m0002.png" id="39_d2t1y"]
 [ext_resource type="Script" uid="uid://c7rx6roh6a3pq" path="res://m/m.gd" id="39_gngh3"]
 [ext_resource type="PackedScene" uid="uid://bxxoqeuwm5odp" path="res://items/hand gun/gun.tscn" id="40_wnkbs"]
+[ext_resource type="AudioStream" uid="uid://b6a4jikwypniy" path="res://recovery center/cartoon-gliss-bell-chime.ogg" id="43_uit24"]
 [ext_resource type="Texture2D" uid="uid://cg8ltt5n3g47w" path="res://items/money.png" id="54_4w656"]
+[ext_resource type="AudioStream" uid="uid://cql1nfcsvfjhg" path="res://chill-beats.ogg" id="54_rm4vd"]
 [ext_resource type="Script" uid="uid://ds1rnw3mef6o6" path="res://world/money.gd" id="55_e71vb"]
 [ext_resource type="AudioStream" uid="uid://0kuxf51lklou" path="res://m/fanfare-1-276819.mp3" id="56_rnkwl"]
 
@@ -651,6 +655,15 @@ images = Dictionary[StringName, Texture2D]({
 })
 explodeable = false
 
+[node name="hurt" type="AudioStreamPlayer2D" parent="row 1/jeff"]
+stream = ExtResource("31_vke2r")
+pitch_scale = 1.1
+
+[node name="scream" type="AudioStreamPlayer2D" parent="row 1/jeff"]
+stream = ExtResource("32_ruth0")
+volume_db = -15.0
+pitch_scale = 0.9
+
 [node name="Money" type="TextureRect" parent="row 1"]
 offset_left = 1694.0
 offset_top = 434.0
@@ -761,6 +774,9 @@ offset_left = -3529.94
 offset_top = 298.988
 offset_right = -2842.94
 offset_bottom = 797.988
+
+[node name="chime" type="AudioStreamPlayer2D" parent="row 2/CaveFull/ControlPannel"]
+stream = ExtResource("43_uit24")
 
 [node name="arrow_out_of_vault" type="TextureRect" parent="row 2"]
 offset_left = 3436.0
@@ -1104,6 +1120,11 @@ SPEED = 100.0
 ACCEL_RATE = 2.0
 min_x = 360.064
 max_x = 3317.15
+
+[node name="music" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("54_rm4vd")
+volume_db = -7.0
+autoplay = true
 
 [node name="m" parent="Camera2D" instance=ExtResource("4_7mycd")]
 visible = false
