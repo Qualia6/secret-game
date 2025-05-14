@@ -8,6 +8,24 @@ var respawn_t: float = 1.
 
 var not_realized_jeff_key_killed: bool = true
 
+func _get_executions() -> Dictionary[String, Callable]:
+	return {
+		"leave_up": leave_up
+	}
+
+func leave_up():
+	visible = false
+	queue_free()
+
+var already_go_upped: bool = false
+
+func _clicked() -> void:
+	if GLOBAL.flags[&"jerboa_up"] and not already_go_upped:
+		already_go_upped = true
+		goto("GO UP")
+		return
+	super._clicked()
+
 func _updated():
 	if not_realized_jeff_key_killed and GLOBAL.flags[&"jeff_killed_by_key"]:
 		goto("WOW KEY KILL")

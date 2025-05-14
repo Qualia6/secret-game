@@ -65,3 +65,8 @@ func _process(delta: float) -> void:
 		respawning = false
 		waiting_for_exec = false
 		position = respawn_location_3
+
+func _updated():
+	if GLOBAL.flags[&"jerboa_up"]:
+		queue_free()
+		visible = false

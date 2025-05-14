@@ -31,3 +31,9 @@ func _on_arrow_out_of_vault_clicked() -> void:
 
 func _on_arrow_into_hole_clicked() -> void:
 	position.y = 1000
+
+func _on_ceilling_hole_utilize_hole() -> void:
+	position.y = -455.0
+
+func _on_arrow_back_down_clicked() -> void:
+	position.y = 320

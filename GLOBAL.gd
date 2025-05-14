@@ -23,7 +23,10 @@ const starting_flags = {
 	&"spoken_to_m": false,
 	&"jerboa_talking_about_money": false,
 	&"june_moved": false,
-	&"jeff_mentioned_hole": false
+	&"jeff_mentioned_hole": false,
+	&"jerboa_up": false,
+	&"jeff_up": false,
+	&"june_up": false,
 }
 
 static var flags: Dictionary = starting_flags.duplicate()

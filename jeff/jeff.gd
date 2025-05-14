@@ -9,9 +9,15 @@ var respawn_t: float = 1.
 func _get_executions() -> Dictionary[String, Callable]:
 	return {
 		"go_to_previous_line": go_to_previous_line,
+		"leave_up": leave_up
 	}
 
+func leave_up():
+	visible = false
+	queue_free()
+
 var already_respawned: bool = false
+var already_go_upped: bool = false
 
 func _clicked() -> void:
 	if respawning or jumping: return
@@ -23,6 +29,10 @@ func _clicked() -> void:
 		return
 	if INVENTORY.selected_item_id == &"gun":
 		jump()
+		return
+	if GLOBAL.flags[&"jerboa_up"] and not already_go_upped:
+		already_go_upped = true
+		goto("GO UP")
 		return
 	super._clicked()
 
