@@ -16,6 +16,7 @@ func _updated():
 func _about_to_explode():
 	show_image(&"aaaa")
 	GLOBAL.update_flag(&"june_dead", true)
+	GLOBAL.update_flag(&"june_moved", true)
 
 
 func _on_control_pannel_june_recovered():

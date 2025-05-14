@@ -4,7 +4,7 @@ func _ready() -> void:
 	$anim.play("RESET")
 
 func play_animation(animation: int) -> void:
-	print("Now playing animation", animation)
+	#print("Now playing animation", animation)
 	$anim.stop()
 	match animation:
 		1: $anim.play("1")

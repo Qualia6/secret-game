@@ -10,9 +10,16 @@ var executions: Dictionary[String, Callable]
 
 var register
 
-func goto(marked: String) -> void:
-	current_dialoge = markers[marked]
+func gotoline(line: int) -> void:
+	current_dialoge = line
 	execute_dialoge()
+
+func gotoDontExec(marked: String) -> void:
+	current_dialoge = markers[marked] - 1
+	
+
+func goto(marked: String) -> void:
+	gotoline(markers[marked])
 
 var waiting_for_exec: bool = false
 
@@ -62,6 +69,12 @@ func execute_dialoge():
 	
 	if dialoge[current_dialoge].begins_with("!FlagTrue "):
 		GLOBAL.update_flag(StringName(dialoge[current_dialoge].right(-10)), true)
+		current_dialoge += 1
+		execute_dialoge()
+		return
+	
+	if dialoge[current_dialoge].begins_with("!FlagFalse "):
+		GLOBAL.update_flag(StringName(dialoge[current_dialoge].right(-11)), false)
 		current_dialoge += 1
 		execute_dialoge()
 		return
@@ -138,8 +151,10 @@ func execute_dialoge():
 	
 	say(dialoge[current_dialoge])
 
+var current_image_name: StringName
 
 func show_image(image_name: StringName):
+	current_image_name = image_name
 	texture = images[image_name]
 
 

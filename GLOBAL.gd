@@ -18,6 +18,12 @@ const starting_flags = {
 	&"jerboa_showed_gun": false,
 	&"control_pannel_destroied": false,
 	&"recovery_center_destroied": false,
+	&"ceiling_broken": false,
+	&"jeff_jumped_before": false,
+	&"spoken_to_m": false,
+	&"jerboa_talking_about_money": false,
+	&"june_moved": false,
+	&"jeff_mentioned_hole": false
 }
 
 static var flags: Dictionary = starting_flags.duplicate()

@@ -359,6 +359,17 @@ texture = ExtResource("7_022t5")
 script = ExtResource("8_locsq")
 metadata/_edit_use_anchors_ = true
 
+[node name="darken" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = -110.0
+offset_top = -29.0
+offset_right = 1336.0
+offset_bottom = 671.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.568627)
+
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(597, 395)
 scale = Vector2(0.5, 0.5)

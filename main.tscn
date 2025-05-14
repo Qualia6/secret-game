@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=63 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cfyw3rxlkneoi" path="res://world/grass.jpg" id="1_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://world/1bcsjba9.png" id="1_1bvp3"]
@@ -40,18 +40,44 @@
 [ext_resource type="Texture2D" uid="uid://r2jqlpofr0r" path="res://jerboa/front_lean.png" id="30_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://dx3s18u1p7p14" path="res://jerboa/front.png" id="31_facbu"]
 [ext_resource type="Texture2D" uid="uid://dfx3544m1us0c" path="res://recovery center/recovery center top layer.png" id="31_qnost"]
+[ext_resource type="PackedScene" uid="uid://duflfgfrcmmcq" path="res://world/ceiling_tile.tscn" id="31_uypp3"]
 [ext_resource type="Script" uid="uid://bg6hbkmf6hyj" path="res://recovery center/recovery_center.gd" id="31_wnkbs"]
 [ext_resource type="Texture2D" uid="uid://cbqthswj5smp3" path="res://jerboa/back.png" id="32_b1qrp"]
+[ext_resource type="Shader" uid="uid://de023xxgl01ey" path="res://world/manual_uvs.gdshader" id="32_blkrb"]
+[ext_resource type="PackedScene" uid="uid://bm2p1ggeilkoh" path="res://world/ceilling_hole.tscn" id="33_blkrb"]
 [ext_resource type="Script" uid="uid://b1uwfb8e7rv44" path="res://jerboa/jerboa.gd" id="33_gngh3"]
 [ext_resource type="Texture2D" uid="uid://b2g4rpae1ea4g" path="res://m/m0001.png" id="37_4lmeg"]
 [ext_resource type="Texture2D" uid="uid://cbwyq2lk2jaaj" path="res://m/m0000.png" id="38_0cp0l"]
 [ext_resource type="Texture2D" uid="uid://kihidlfepqwe" path="res://m/m0003.png" id="39_4lmeg"]
+[ext_resource type="Script" uid="uid://dmsp48p3obyt6" path="res://basic_clickable.gd" id="39_abqjc"]
 [ext_resource type="Texture2D" uid="uid://n6w2cojr2tfr" path="res://m/m0002.png" id="39_d2t1y"]
 [ext_resource type="Script" uid="uid://c7rx6roh6a3pq" path="res://m/m.gd" id="39_gngh3"]
 [ext_resource type="PackedScene" uid="uid://bxxoqeuwm5odp" path="res://items/hand gun/gun.tscn" id="40_wnkbs"]
+[ext_resource type="Texture2D" uid="uid://cg8ltt5n3g47w" path="res://items/money.png" id="54_4w656"]
+[ext_resource type="Script" uid="uid://ds1rnw3mef6o6" path="res://world/money.gd" id="55_e71vb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_abqjc"]
+resource_local_to_scene = true
+shader = ExtResource("32_blkrb")
+shader_parameter/t = Transform2D(1, 0, -0.9, 8, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uypp3"]
+resource_local_to_scene = true
+shader = ExtResource("32_blkrb")
+shader_parameter/t = Transform2D(1, 0, -0.3, 8, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blkrb"]
+resource_local_to_scene = true
+shader = ExtResource("32_blkrb")
+shader_parameter/t = Transform2D(1, 0, 0.3, 8, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6iyjs"]
+resource_local_to_scene = true
+shader = ExtResource("32_blkrb")
+shader_parameter/t = Transform2D(1, 0, 0.9, 8, 0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0n3wm"]
 font_size = 24
@@ -173,9 +199,9 @@ strong = true
 
 [node name="Photo1" type="TextureRect" parent="row 1"]
 offset_left = 964.0
-offset_top = 118.0
+offset_top = 136.0
 offset_right = 1247.0
-offset_bottom = 349.0
+offset_bottom = 367.0
 texture = ExtResource("7_0cbny")
 expand_mode = 1
 script = ExtResource("6_272bh")
@@ -244,6 +270,8 @@ hit jeff! hit jeff! hit jeff!
 hehehe
 !GoTo HIT JEFF
 
+
+
 ~ WOW KEY KILL
 !Image stand
 wow you actually killed him
@@ -261,6 +289,9 @@ i didnt think you would actually do it kinda crazy
 !Image stand
 but at least hes not gonna bug us anymore
 !GoTo KEY KILL LOOP
+
+
+
 ~ RESPAWNED
 !Image uhh
 omg what im alive
@@ -308,15 +339,15 @@ script = ExtResource("6_272bh")
 [node name="jeff" parent="row 1" instance=ExtResource("4_7mycd")]
 z_index = 1
 texture_filter = 1
-offset_left = 253.0
+offset_left = 246.0
 offset_top = 172.0
-offset_right = 584.0
+offset_right = 577.0
 offset_bottom = 511.0
 texture = ExtResource("9_yaehf")
 script = ExtResource("14_1u8w0")
 respawn_location_1 = Vector2(906, 500)
 respawn_location_2 = Vector2(925, 850)
-respawn_location_3 = Vector2(662, 958)
+respawn_location_3 = Vector2(662, 981.595)
 all_dialoge = "!Image yay
 Hey Player, Click Me!
 ~ LOOP
@@ -329,6 +360,9 @@ The FOURTH Will SUPRISE And SHOCK You!
 !Image smile
 FIRST: Use RIGHT And LEFT Arrow Keys To Move
 SECOND: Press i To Open And Close Your Inventory
+When You Have An Item, You Can Click It To Hold It
+!Image yay
+If You Are Not Holding An Item Noboy Will Know That You Have It!
 !Image wow
 THIRD: I Have Been Told That There Is A Secret Some Where Around Here
 !Image hmmm
@@ -343,7 +377,7 @@ Well The SHOCKING FOURTH As I Promised
 !Image hmmm
 Wait No I Just Had A Thought
 There IS Still A Secret
-Just The State Of The Existance Of A Secret I Known
+Just The State Of The Existance Of A Secret Is Known
 Wait Actually I Think I Said That At The Start
 !Image sad
 Yea I Think I Did Oops My Bad
@@ -358,27 +392,216 @@ OK,  FOURTH
 I Have Been Told That There Is A...
 !Image secret
 i think this is not really widly known so i need to say this quietly
-i have been told by... sources.. that there is a \"doomsday device\" somewhere around here
+i have been told by... sources...
+that there is a \"doomsday device\" somewhere around here
 !Image wow
 Isnt That Crazy!
 !FlagTrue jeff_yap
 !Image smile
-Well That  Is All I Have To Say! You Can Click Me Again To Loop My Dialoge!
+Well That Is All I Have To Say! You Can Click Me Again To Loop My Dialoge!
 
 !GoTo LOOP
+
+
+
+~ SEE M EARLY
+!Image wow
+
+You Summoned M?!
+I Didnt Even Tell You How
+I Even Forgot That Was Something I Needed To Tell You
+Five Things To Tell Not Four
+!Image hmmm
+Well I Guess I Dont Need To Tell You That One Anymore
+So It Is Only Four Things To Tell You After All
+!Image yay
+Thats Crazy
+
+!Image hmmm
+I Dont Even Remeber What I Was Saying Before M Arrived
+Ill Just Loop Over
+!FlagTrue jeff_yap
+!GoTo LOOP
+
+
 ~ HIT BY KEY
 !Image dead
 
 !GoTo HIT BY KEY
-~ RESPAWNED
-!Image yay
+
+
+~ RESPAWN AGAIN
+!Image wave
 Yay You Recovered Me
-!Image smile
+!Image yay
+You Are So Wonderful!
+!Exec go_to_previous_line
+
+
+~ RESPAWNED
+!Image wave
+Yay You Recovered Me
+!Image yay
 You Are So Wonderful!
 !Image hmmm
-There Is More Dialoge To Say But
+Do You Think We Are In A Cave?
+!GoTo ROCK LOOP
+
+
+
+~ ROCK LOOP
+!Image smile
+Look At These Rocks
+
+!Image smile
+I Love Rocks
+!Image yay
+They Are So Strong
+
+!GoTo ROCK LOOP
+
+
+
+~ JUMP AGAIN
+!Image wow
+AAAAAA
+!Exec go_to_previous_line
+
+
+
+~ JUMP CAVE FIRST
+!Image wow
+AAAAAA
+I Thought That You Where Holding The ... Err
+!Image secret
+i thought you where holding the dooms day device
+it looks very simular to that
+!Image hmmm
+Suspiciously Simular
+Sussy
+Very Sussy
+!Image yay
+So I Jumped Out Of The Way
+In Case It Was The ...
+!Image secret
+in case it was the dooms day device
+!Image yay
+But You Wouldnt Have That
+!Image hmmm
+Unless...
+Hrmmm Idk
+!Image yay
+Anyways Did You See How High I Jumped?!
+!Image smile
+Never Skipping Leg Day Really Pays Off
+!Image hmmm
+Actually Its A Good Thing I Am In A Cave Now
+If There Was A Ceiling
+Shortly Above My Head
+Then I Would I Have Launched Right Through It
+Which Would Have Created A Hole
+A Hole That Would Presemably Lead To Somewhere
+!Image yay
+Regardless
+!Image smile
+I Remebered That
+I Have Three Key Things To Tell You
+!Image yay
+You Can Summon A Very Important Being
+!IfFlag spoken_to_m
+!GoTo ALREADY TALKED TO M
+A Being That Deals In Money
+!Image wow
+A Being That Love Money So Much That
+They Named Themselves After The First Letter!
+!Image yay
+They Are Very Important So Please Dont Waste Their Time
 !Image sad
-But Qualia Hasnt Written It Yet"
+Btw, I Am Sorry I Forgot To Tell You All This Earlier
+I Completly Forgot
+But The Rocks Reminded Me
+!Image smile
+I Love Rocks
+!Image yay
+Anyway Here Are The Key Facts
+~ TELL KEY FACTS
+!Image secret
+1. that which is not primary/conventional
+2. that which moves/exchanges
+3. that which is the beings name
+!Image yay
+Together Form An Incantation
+To Summon The Being That Deals In Money!
+!Image smile
+Now I Am Going To Go Back To Appreciating The Rocks
+
+!Image yay
+Here Are The Key Facts Again:
+!GoTo TELL KEY FACTS
+
+
+
+~ ALREADY TALKED TO M
+!Image hmmm
+Wait You Already Talked To M
+Weird...
+!GoTo SKIP SORRY ABOUT M
+
+
+
+~ SPOKEN WITH M
+!Image wow
+
+Yay You Summoned M!
+!Image sad
+Sorry I Was So Cryptic About
+The Incantation To Sumon Them
+M Doesnt Like When Anyone Says That Straight Up
+~ SKIP SORRY ABOUT M
+!Image hmmm
+You Know I Wonder If M Being So Important
+Knows Anything About The Doomsday Device
+They Are Always Talking About Timelines
+Maybe A Doomsday Device Might Be
+Might Be A Way A Timeline Can End
+I Wonder What Other Ways A Timeline Can End Are
+!Image sad
+I Never Have Much Chance To Ask M Anything
+Because They Are Always Busy
+!Image hmmm
+But If I Did M Would Probably Say
+Say That It Is Secret
+Idk
+!Image wave
+Anyway I Am Going To Go Back To Admiring The Rocks
+I Love Rocks
+They Are So Strong
+I Bet No Doomsday Device Could Hurt Them
+!Image hmmm
+Or Ceilling Tiles
+Rocks And Ceilling Would Probably Be
+The Only Things To Survive A Doomsday Device
+!Image smile
+I Fr*cking Love Rocks
+
+!GoTo ROCK LOOP
+
+
+~ JUMP SURFACE FIRST
+!Image wow
+AAAAAA
+Oh Dang
+!Image hmmm
+Jumping To Dodge The
+!Image secret
+dodge the doomsday device
+!Image hmmm
+Looking Thing That You Are Holding
+It Seems I Launched Right Through Ceiling
+And Created A Hole
+A Hole That  Presemably Leads Somewhere
+!FlagTrue jeff_mentioned_hole
+!Halt"
 images = Dictionary[StringName, Texture2D]({
 &"dead": ExtResource("20_d13ii"),
 &"hmmm": ExtResource("5_ycdy4"),
@@ -390,6 +613,16 @@ images = Dictionary[StringName, Texture2D]({
 &"yay": ExtResource("11_cegan")
 })
 explodeable = false
+
+[node name="Money" type="TextureRect" parent="row 1"]
+offset_left = 1694.0
+offset_top = 434.0
+offset_right = 1865.0
+offset_bottom = 518.0
+rotation = -0.923637
+texture = ExtResource("54_4w656")
+expand_mode = 1
+script = ExtResource("55_e71vb")
 
 [node name="Node2D" type="Node2D" parent="row 1"]
 skew = 0.523599
@@ -421,15 +654,47 @@ expand_mode = 1
 script = ExtResource("6_272bh")
 strong = true
 
+[node name="CeilingTile" parent="row 1" instance=ExtResource("31_uypp3")]
+material = SubResource("ShaderMaterial_abqjc")
+offset_left = -628.0
+offset_top = -7.0
+offset_right = 789.0
+offset_bottom = 79.0
+
+[node name="CeilingTile2" parent="row 1" instance=ExtResource("31_uypp3")]
+material = SubResource("ShaderMaterial_uypp3")
+offset_left = 725.0
+offset_top = -7.0
+offset_right = 2067.0
+offset_bottom = 81.0
+
+[node name="CeilingTile3" parent="row 1" instance=ExtResource("31_uypp3")]
+material = SubResource("ShaderMaterial_blkrb")
+offset_left = 2053.0
+offset_top = -9.0
+offset_right = 2949.0
+offset_bottom = 77.0
+
+[node name="CeilingTile4" parent="row 1" instance=ExtResource("31_uypp3")]
+material = SubResource("ShaderMaterial_6iyjs")
+offset_left = 2855.0
+offset_top = -12.0
+offset_right = 4122.0
+offset_bottom = 80.0
+
 [node name="Node2D3" type="Node2D" parent="row 1"]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.7, 0.7)
 
 [node name="vault" parent="row 1/Node2D3" instance=ExtResource("21_d13ii")]
-offset_left = 3815.0
-offset_top = -11.25
-offset_right = 4586.0
-offset_bottom = 708.75
+offset_left = 4501.43
+offset_top = 58.5714
+offset_right = 5272.43
+offset_bottom = 778.571
 strong = true
+
+[node name="CeillingHole" parent="." instance=ExtResource("33_blkrb")]
+unique_name_in_owner = true
+position = Vector2(369, 43)
 
 [node name="row 2" type="Node2D" parent="."]
 
@@ -468,8 +733,7 @@ offset_bottom = 1416.0
 scale = Vector2(1, -1)
 texture = ExtResource("23_0odxb")
 expand_mode = 1
-script = ExtResource("6_272bh")
-explodeable = false
+script = ExtResource("39_abqjc")
 
 [node name="jerboa" parent="row 2" instance=ExtResource("4_7mycd")]
 z_index = 1
@@ -520,29 +784,44 @@ c o n s i d e r   t h a t\\no f f e r
 c o m e   b a c k\\nw h e n   y o u   a r e
 ...
 r i c h e r
-~ LOOP POINT
 
+!GoTo SIDE LOOP
+
+
+
+~ SIDE LOOP
 !Image side
 
 !Image side_lean
 
-!GoTo LOOP POINT
-~ PLEASE PROVIDE MONEY
+!GoTo SIDE LOOP
+
+
+
+~ PLEASE PROVIDE MONEY 1
 p l e a s e   p r o v i d e\\nm o n e y
-!GoTo CHECK MONEY
-~ TALK ABOUT MONEY FIRST
+!GoTo CHECK MONEY 1
+
+
+
+~ TALK ABOUT MONEY 1
 !Image front
+!FlagTrue jerboa_talking_about_money
 
 i   s e e   y o u   w i s h\\nt o   p u r c h a s e
-~ CHECK MONEY
+~ CHECK MONEY 1
 !Load 0
 !If == money
-!GoTo PLEASE PROVIDE MONEY
+!GoTo PLEASE PROVIDE MONEY 1
 !IfHolding money
-!GoTo GOT MONEY
-!GoTo PLEASE PROVIDE MONEY
-~ GOT MONEY
+!GoTo GOT MONEY 1
+!GoTo PLEASE PROVIDE MONEY 1
+
+
+
+~ GOT MONEY 1
 !FlagDec money
+!Exec stop_holding
 t h a n k   y o u   f o r\\ny o u r    c u r r e n c y
 !IfExec is_gun_visible
 !GoTo SKIP GET GUN
@@ -583,13 +862,190 @@ a l s o
 d o   n o t
 s h o w   i t\\nt o   j e f f
 i t   w i l l\\ns c a r e   h i m
-~ LOOP POINT 2
+!FlagFalse jerboa_talking_about_money
+!GoTo SIDE LOOP
+
+
+
+
+~ PLEASE PROVIDE MONEY 2
+p l e a s e   p r o v i d e\\nm o n e y
+!GoTo CHECK MONEY 2
+
+
+
+~ TALK ABOUT MONEY 2
+!Image front
+!FlagTrue jerboa_talking_about_money
+
+i   s e e   y o u   w i s h\\nt o   u p g r a d e
+~ CHECK MONEY 2
+!Load 0
+!If == money
+!GoTo PLEASE PROVIDE MONEY 2
+!IfHolding money
+!GoTo GOT MONEY 2
+!GoTo PLEASE PROVIDE MONEY 2
+
+
+
+~ GOT MONEY 2
+!FlagDec money
+!Exec stop_holding
+t h a n k   y o u   f o r\\ny o u r    c u r r e n c y
+!Load 0
+!Exec show_gun
+!FlagFalse has_gun
+i   s h a l l\\nu p g r a d e   n o w
+!Image front_lean
+
+!Image front
+!Exec hide_gun
+
 !Image side
 
+!Image back
+
+...
+ . . .
+  .  .  .
+   .   .   .
+!Image side
+
+!Image front
+u p g r a d e s\\nc o m p l e t e
+!Image front_lean
+!Load 1
+!Exec show_gun
+
+!Image front
+y o u   c a n   n o w\\nd e s t r o y   a l l   t h a t\\nl i v e s   a n d\\nh a d   l i v e d
+!FlagInc gun_lvl
+!FlagTrue has_gun
+!Exec hide_gun
+
+!Image side
+o n e   u p g r a d e\\nr e m a i n i n g
+!FlagFalse jerboa_talking_about_money
+!GoTo SIDE LOOP
+
+
+
+
+~ PLEASE PROVIDE MONEY 3
+p l e a s e   p r o v i d e\\nm o n e y
+!GoTo CHECK MONEY 3
+
+
+
+~ TALK ABOUT MONEY 3
+!Image front
+!FlagTrue jerboa_talking_about_money
+
+i   s e e   y o u   w i s h\\nt o   u p g r a d e
+~ CHECK MONEY 3
+!Load 0
+!If == money
+!GoTo PLEASE PROVIDE MONEY 3
+!IfHolding money
+!GoTo GOT MONEY 3
+!GoTo PLEASE PROVIDE MONEY 3
+
+
+
+~ GOT MONEY 3
+!FlagDec money
+!Exec stop_holding
+t h a n k   y o u   f o r\\ny o u r    c u r r e n c y
+!Load 1
+!Exec show_gun
+!FlagFalse has_gun
+t h e   f i n a l\\nw e a p o n   w i l l\\nb e   f o r g e d
+!Image front_lean
+
+!Image front
+!Exec hide_gun
+
+!Image side
+
+!Image back
+
+.
+ .
+  .
+   .
+    .
+     .
+      .
+       .
+!Image side
+
+!Image front
+s o r r y
+t h i s   i s\\nt a k i n g   a   w h i l e
+!Image side
+
+!Image back
+
+.
+ .
+..
+  .
+. .
+ ..
+...
+   .
+.  .
+ . .
+  ..
+. ..
+ ...
+....
+    .
+.   .
+ .  .
+  . .
+   ..
+.  ..
+ . ..
+  ...
+. ...
+ ....
+.....
+.... .
+... . .
+.. . . .
+. . . . .
+. . . .
+. . .
+. .
+.
+!Image side
+o k
+!Image front
+i t   i s   r e a d y
+!Image front_lean
+!Load 2
+!Exec show_gun
+
+!Image front
+a l l   b u t   t h e
+s t r o n g
+a r e\\nd e s t r u c t a b l e\\nn o w
+!FlagInc gun_lvl
+!FlagTrue has_gun
+!Exec hide_gun
+i t   i s   t i m e
+!Image side
+f o r   t h i s   r e a l i t y
 !Image side_lean
 
-~ RESPAWNED
-!GoTo LOOP POINT 2"
+!Image side
+t o   e n d
+!Image front
+f o r   y o u
+!FlagFalse jerboa_talking_about_money
+!GoTo SIDE LOOP"
 images = Dictionary[StringName, Texture2D]({
 &"back": ExtResource("32_b1qrp"),
 &"front": ExtResource("31_facbu"),
@@ -597,7 +1053,6 @@ images = Dictionary[StringName, Texture2D]({
 &"side": ExtResource("28_4k2k6"),
 &"side_lean": ExtResource("29_0rl1p")
 })
-strong = true
 
 [node name="gun" parent="row 2/jerboa" instance=ExtResource("40_wnkbs")]
 visible = false
@@ -615,6 +1070,7 @@ max_x = 3317.15
 
 [node name="m" parent="Camera2D" instance=ExtResource("4_7mycd")]
 visible = false
+z_index = 9
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -630,9 +1086,13 @@ texture = ExtResource("39_d2t1y")
 script = ExtResource("39_gngh3")
 all_dialoge = "!Image right
 !Halt
+
+
+
 ~ ARRIVE FIRST
 !Image right
 !Exec appear
+!FlagTrue spoken_to_m
 Hello! M is at your service!
 !IfFlag jeff_killed_by_key
 !GoTo FIRST MEETING
@@ -645,6 +1105,9 @@ Here is your buck
 Good luck and good bye!
 !Exec leave
 !Halt
+
+
+
 ~ FIRST MEETING
 Your wish is my command!
 !Image left
@@ -661,6 +1124,9 @@ I must go now!
 Perhaps I shall see you in anouther life
 !Exec leave
 !Halt
+
+
+
 ~ ARRIVE SECOND
 !Image right
 !Exec appear
@@ -672,6 +1138,9 @@ I am an exeptionaly busy being!
 Please do not bother me again!
 !Exec leave
 !Halt
+
+
+
 ~ ARRIVE THIRD
 !Image right
 !Exec appear_angry
@@ -683,7 +1152,7 @@ you will feel my wrath
 !Exec game_over
 ~ WAIT ALREADY DOOMED
 !Image left
-Wait it appears that you timeline is already doomed
+Wait it appears that your timeline is already doomed
 !Image right
 Then I shall \"take care\" of you later
 !Image evil
@@ -695,6 +1164,9 @@ Then I shall \"take care\" of you later
 LEAVE ME ALONE!!!!!!
 !Exec leave_angry
 !Halt
+
+
+
 ~ GENOCIDE
 !Image right
 !Exec appear

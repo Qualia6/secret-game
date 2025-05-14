@@ -35,7 +35,3 @@ func _gui_input(event):
 		event.canceled = true
 	else:
 		_clicked()
-
-
-func _on_control_pannel_jeff_recovered() -> void:
-	pass # Replace with function body.

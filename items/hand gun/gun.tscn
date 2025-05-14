@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxxoqeuwm5odp"]
 
 [ext_resource type="Script" uid="uid://ch8wdqw20j0f1" path="res://items/hand gun/gun.gd" id="1_3puij"]
-[ext_resource type="Shader" uid="uid://ye13f7nx1s4p" path="res://items/hand gun/alpha.gdshader" id="1_8edgh"]
+[ext_resource type="Shader" uid="uid://ye13f7nx1s4p" path="res://alpha.gdshader" id="1_8edgh"]
 [ext_resource type="Texture2D" uid="uid://c4v42m3buo21p" path="res://items/hand gun/sheet.png" id="2_3puij"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rnl5w"]

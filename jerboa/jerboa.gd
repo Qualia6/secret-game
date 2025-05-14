@@ -13,8 +13,12 @@ func _get_executions() -> Dictionary[String, Callable]:
 	return {
 		"show_gun": show_gun,
 		"hide_gun": hide_gun,
-		"is_gun_visible": is_gun_visible
+		"is_gun_visible": is_gun_visible,
+		"stop_holding": stop_holding,
 	}
+
+func stop_holding():
+	INVENTORY.deselect_current_item()
 
 func show_gun():
 	$gun.visible = true
@@ -23,23 +27,21 @@ func show_gun():
 func hide_gun():
 	$gun.visible = false
 
-var talking_about_money: bool = false
-
 func is_gun_visible() -> bool:
 	return $gun.visible
 
 func _clicked():
-	if INVENTORY.selected_item_id == &"money" and GLOBAL.flags[&"jerboa_showed_gun"] and not respawning:
-		if not talking_about_money:
-			talking_about_money = true
-			match GLOBAL.flags[&"gun_lvl"]:
-				-1:
-					goto("TALK ABOUT MONEY FIRST")
-					return
-				0:
-					pass
-				1:
-					pass
+	if INVENTORY.selected_item_id == &"money" and GLOBAL.flags[&"jerboa_showed_gun"] and not respawning and not GLOBAL.flags[&"jerboa_talking_about_money"]:
+		match GLOBAL.flags[&"gun_lvl"]:
+			-1:
+				goto("TALK ABOUT MONEY 1")
+				return
+			0:
+				goto("TALK ABOUT MONEY 2")
+				return
+			1:
+				goto("TALK ABOUT MONEY 3")
+				return
 	super._clicked()
 
 func _on_control_pannel_jerboa_recovered():
@@ -63,4 +65,3 @@ func _process(delta: float) -> void:
 		respawning = false
 		waiting_for_exec = false
 		position = respawn_location_3
-		goto("RESPAWNED")

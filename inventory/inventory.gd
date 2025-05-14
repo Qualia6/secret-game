@@ -22,13 +22,14 @@ func _updated():
 	items += int(GLOBAL.flags[&"has_key"])
 	if not GLOBAL.flags[&"has_key"] and selected_item_id == &"key": deselect_current_item()
 	
-	print(GLOBAL.flags[&"has_gun"])
-	print(GLOBAL.flags)
-	print(GLOBAL.flags[&"gun_lvl"])
+	#print(GLOBAL.flags[&"has_gun"])
+	#print(GLOBAL.flags)
+	#print(GLOBAL.flags[&"gun_lvl"])
 	$Gun.visible = GLOBAL.flags[&"has_gun"]
 	items += int(GLOBAL.flags[&"has_gun"])
 	if not GLOBAL.flags[&"has_gun"] and selected_item_id == &"gun": deselect_current_item()
 	if $Gun.visible: %"gun asset".play_animation(GLOBAL.flags[&"gun_lvl"])
+	%darken.visible = GLOBAL.flags[&"has_gun"] and GLOBAL.flags[&"gun_lvl"] == 2
 	
 	var money: int = GLOBAL.flags[&"money"]
 	$Money.visible = money >= 1

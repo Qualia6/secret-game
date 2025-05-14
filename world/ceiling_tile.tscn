@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://duflfgfrcmmcq"]
+
+[ext_resource type="Shader" uid="uid://de023xxgl01ey" path="res://world/manual_uvs.gdshader" id="1_kllxn"]
+[ext_resource type="Texture2D" uid="uid://bqh3inidk0ha3" path="res://world/ceiling_tile.jpg" id="2_jx0o1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vthdv"]
+resource_local_to_scene = true
+shader = ExtResource("1_kllxn")
+shader_parameter/t = Transform2D(1, 0, -1, 4, 0, 0)
+
+[node name="CeilingTile" type="TextureRect"]
+material = SubResource("ShaderMaterial_vthdv")
+offset_left = -328.0
+offset_top = -121.0
+offset_right = 768.0
+offset_bottom = 68.0
+texture = ExtResource("2_jx0o1")
+expand_mode = 1
+stretch_mode = 1
