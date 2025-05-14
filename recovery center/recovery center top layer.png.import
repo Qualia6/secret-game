@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbn21hxal74jn"
-path="res://.godot/imported/b4asm63y.png-a8eb8ec76a838605ecc76bf9b091db40.ctex"
+uid="uid://dfx3544m1us0c"
+path="res://.godot/imported/recovery center top layer.png-d118553c33dd49d551da255b60a35f0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b4asm63y.png"
-dest_files=["res://.godot/imported/b4asm63y.png-a8eb8ec76a838605ecc76bf9b091db40.ctex"]
+source_file="res://recovery center/recovery center top layer.png"
+dest_files=["res://.godot/imported/recovery center top layer.png-d118553c33dd49d551da255b60a35f0d.ctex"]
 
 [params]
 

@@ -6,35 +6,40 @@
 [ext_resource type="Texture2D" uid="uid://df45r1h60k5p8" path="res://recovery center/lever sheet.png" id="3_5usmq"]
 [ext_resource type="Script" uid="uid://dmsp48p3obyt6" path="res://basic_clickable.gd" id="5_5usmq"]
 
-[node name="ControlPannel" type="Sprite2D"]
+[node name="ControlPannel" type="TextureRect"]
 texture_filter = 1
+offset_left = -319.0
+offset_top = -261.0
+offset_right = 368.0
+offset_bottom = 238.0
 texture = ExtResource("1_fwmsb")
 script = ExtResource("2_5usmq")
+strong = true
 
 [node name="light_jeff" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-181.47, -208.386)
+position = Vector2(151.8, 32.9625)
 scale = Vector2(1.325, 1.325)
 texture = ExtResource("2_ysj1y")
 hframes = 2
 
 [node name="light_june" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(15.1201, -215.181)
+position = Vector2(348.39, 26.1675)
 scale = Vector2(1.325, 1.325)
 texture = ExtResource("2_ysj1y")
 hframes = 2
 
 [node name="light_jerboa" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(177.14, -231.036)
+position = Vector2(510.41, 10.3125)
 scale = Vector2(1.325, 1.325)
 texture = ExtResource("2_ysj1y")
 hframes = 2
 
 [node name="lever_jeff" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-123.14, 58.8918)
+position = Vector2(210.13, 300.24)
 scale = Vector2(1.475, 1.475)
 texture = ExtResource("3_5usmq")
 hframes = 2
@@ -48,10 +53,11 @@ offset_top = -64.0
 offset_right = 51.0
 offset_bottom = 80.0
 script = ExtResource("5_5usmq")
+metadata/_edit_use_anchors_ = true
 
 [node name="lever_june" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(49.6802, 54.3621)
+position = Vector2(382.95, 295.711)
 scale = Vector2(1.475, 1.475)
 texture = ExtResource("3_5usmq")
 hframes = 2
@@ -65,10 +71,11 @@ offset_top = -64.6523
 offset_right = 48.6236
 offset_bottom = 79.3477
 script = ExtResource("5_5usmq")
+metadata/_edit_use_anchors_ = true
 
 [node name="lever_jerboa" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(226.83, 40.7712)
+position = Vector2(560.1, 282.12)
 scale = Vector2(1.475, 1.475)
 texture = ExtResource("3_5usmq")
 hframes = 2
@@ -82,6 +89,7 @@ offset_top = -64.9296
 offset_right = 48.522
 offset_bottom = 79.0704
 script = ExtResource("5_5usmq")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="clicked" from="lever_jeff/c" to="." method="_on_jeff_clicked"]
 [connection signal="clicked" from="lever_june/c" to="." method="_on_june_clicked"]

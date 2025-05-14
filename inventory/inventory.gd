@@ -6,6 +6,8 @@ static var the_only_inventory: INVENTORY = null
 var selected_item_object: CanvasItem = null
 
 func _ready():
+	GLOBAL.reset()
+	selected_item_id = &"none"
 	GLOBAL.emitter.updated.connect(_updated)
 	$Key.visible = false
 	$Empty.visible = true
@@ -20,6 +22,9 @@ func _updated():
 	items += int(GLOBAL.flags[&"has_key"])
 	if not GLOBAL.flags[&"has_key"] and selected_item_id == &"key": deselect_current_item()
 	
+	print(GLOBAL.flags[&"has_gun"])
+	print(GLOBAL.flags)
+	print(GLOBAL.flags[&"gun_lvl"])
 	$Gun.visible = GLOBAL.flags[&"has_gun"]
 	items += int(GLOBAL.flags[&"has_gun"])
 	if not GLOBAL.flags[&"has_gun"] and selected_item_id == &"gun": deselect_current_item()

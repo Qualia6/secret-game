@@ -47,6 +47,10 @@ var animation_state: ANIMATION_STATE = ANIMATION_STATE.NONE
 var animation_t: float = 1.
 
 
+func get_vertical_t() -> float:
+	return 1. - animation_t if animation_state == ANIMATION_STATE.APPEAR or animation_state == ANIMATION_STATE.APPEAR_ANGRY else animation_t
+
+
 func _process(delta: float) -> void:
 	if animation_state == ANIMATION_STATE.NONE: return
 	animation_t += delta * 0.5
@@ -55,7 +59,7 @@ func _process(delta: float) -> void:
 		done_moving.emit()
 		if animation_state == ANIMATION_STATE.LEAVE or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
 			visible = false
-	var verticality_t = 1. - animation_t if animation_state == ANIMATION_STATE.APPEAR or animation_state == ANIMATION_STATE.APPEAR_ANGRY else animation_t
+	var verticality_t = get_vertical_t()
 	position = Vector2(-195, -85 + verticality_t * 500)
 	if animation_state == ANIMATION_STATE.APPEAR_ANGRY or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
 		if animation_t != 1.:
@@ -64,14 +68,40 @@ func _process(delta: float) -> void:
 		animation_state = ANIMATION_STATE.NONE
 
 var arrive: int = 0
+var imma_kill_you_now: bool = false
 
 func _input(event: InputEvent) -> void:
 	if not event.is_action_pressed("cave money"): return
 	if visible: return
 	if animation_state != ANIMATION_STATE.NONE: return
+	if imma_kill_you_now: return
 	arrive += 1
 	match arrive:
 		1: goto("ARRIVE FIRST")
 		2: goto("ARRIVE SECOND")
 		3: goto("ARRIVE THIRD")
 		_: goto("ARRIVE FOURTH")
+
+func _updated():
+	if GLOBAL.flags[&"jeff_dead"] and GLOBAL.flags[&"june_dead"] and GLOBAL.flags[&"jerboa_dead"] and \
+			GLOBAL.flags[&"control_pannel_destroied"] and GLOBAL.flags[&"recovery_center_destroied"] and not imma_kill_you_now:
+		imma_kill_you_now = true
+		match animation_state:
+			ANIMATION_STATE.NONE:
+				if visible:
+					goto("GENOCIDE ALREADY HERE")
+				else:
+					goto("GENOCIDE")
+			ANIMATION_STATE.APPEAR:
+				await done_moving
+				goto("GENOCIDE ALREADY HERE")
+			ANIMATION_STATE.APPEAR_ANGRY:
+				animation_state = ANIMATION_STATE.APPEAR
+				await done_moving
+				goto("GENOCIDE ALREADY HERE")
+			ANIMATION_STATE.LEAVE:
+				await done_moving
+				goto("GENOCIDE")
+			ANIMATION_STATE.LEAVE_ANGRY:
+				await done_moving
+				goto("GENOCIDE")

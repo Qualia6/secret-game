@@ -131,15 +131,21 @@ func execute_dialoge():
 		return
 	
 	if dialoge[current_dialoge].begins_with("!Image "):
-		texture = images[StringName(dialoge[current_dialoge].right(-7).to_lower())]
+		show_image(StringName(dialoge[current_dialoge].right(-7).to_lower()))
 		current_dialoge += 1
 		execute_dialoge()
 		return
 	
 	say(dialoge[current_dialoge])
 
+
+func show_image(image_name: StringName):
+	texture = images[image_name]
+
+
 func say(text: String):
 	$Label.text = text.replace("\\n", "\n")
+
 
 func _updated(): pass
 

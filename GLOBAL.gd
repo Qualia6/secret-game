@@ -4,7 +4,7 @@ signal updated
 
 static var emitter: GLOBAL = GLOBAL.new()
 
-static var flags: Dictionary = {
+const starting_flags = {
 	&"has_gun": false,
 	&"jeff_yap": false,
 	&"has_key": false,
@@ -15,8 +15,16 @@ static var flags: Dictionary = {
 	&"jerboa_dead": false,
 	&"money": 0,
 	&"gun_lvl": -1,
+	&"jerboa_showed_gun": false,
+	&"control_pannel_destroied": false,
+	&"recovery_center_destroied": false,
 }
+
+static var flags: Dictionary = starting_flags.duplicate()
 
 static func update_flag(flag: StringName, value):
 	flags[flag] = value
 	emitter.updated.emit()
+
+static func reset():
+	flags = starting_flags.duplicate()

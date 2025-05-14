@@ -297,20 +297,20 @@ script = ExtResource("1_0dv6l")
 
 [node name="R" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_022t5")
-position = Vector2(670.002, 361.002)
+position = Vector2(628.722, 361.002)
 rotation = -6.28319
 scale = Vector2(2.55078, 2.55078)
 texture = ExtResource("1_lhcfm")
 
 [node name="G" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_locsq")
-position = Vector2(670.002, 356.002)
+position = Vector2(630.767, 356.002)
 scale = Vector2(2.54688, 2.54688)
 texture = ExtResource("2_wbsyq")
 
 [node name="B" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0dv6l")
-position = Vector2(653.002, 348.002)
+position = Vector2(617.357, 348.002)
 rotation = 6.28319
 scale = Vector2(2.58984, 2.58984)
 texture = ExtResource("4_f2511")

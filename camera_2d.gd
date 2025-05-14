@@ -21,6 +21,7 @@ func _physics_process(delta: float) -> void:
 
 func _ready():
 	position.y = 320
+	$blinders.visible = true
 
 func _on_vault_travel_through_vault() -> void:
 	position.y = 1000

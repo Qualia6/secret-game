@@ -1,11 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=53 format=3 uid="uid://2yr83b0qkao1"]
 
-[ext_resource type="Texture2D" uid="uid://cfyw3rxlkneoi" path="res://grass.jpg" id="1_0rl1p"]
-[ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://1bcsjba9.png" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://duxqdv7k2g8ax" path="res://q7ynqg64.png" id="2_lquwl"]
-[ext_resource type="Texture2D" uid="uid://cp2csfllnl7eb" path="res://hole.png" id="2_ok6jj"]
+[ext_resource type="Texture2D" uid="uid://cfyw3rxlkneoi" path="res://world/grass.jpg" id="1_0rl1p"]
+[ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://world/1bcsjba9.png" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://duxqdv7k2g8ax" path="res://world/q7ynqg64.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cp2csfllnl7eb" path="res://world/hole.png" id="2_ok6jj"]
 [ext_resource type="PackedScene" uid="uid://5nam6awxin16" path="res://npc.tscn" id="4_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bbn21hxal74jn" path="res://b4asm63y.png" id="4_272bh"]
+[ext_resource type="Texture2D" uid="uid://bbn21hxal74jn" path="res://world/b4asm63y.png" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://blwrbfphq41n0" path="res://june/stand.png" id="5_074og"]
 [ext_resource type="Texture2D" uid="uid://47roib2wp13a" path="res://jeff/hmmm.png" id="5_ycdy4"]
 [ext_resource type="Script" uid="uid://bxpxwh66h55lo" path="res://camera_2d.gd" id="6_7mycd"]
@@ -13,9 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://hvmaey4fl31y" path="res://june/aaa.png" id="6_cegan"]
 [ext_resource type="Script" uid="uid://c8qouthao0yki" path="res://june/june.gd" id="6_qsp4k"]
 [ext_resource type="Texture2D" uid="uid://bwcogln5sjiiw" path="res://jeff/sad.png" id="6_w48qg"]
+[ext_resource type="Texture2D" uid="uid://bqb41hqv42lnk" path="res://world/photo 1.png" id="7_0cbny"]
 [ext_resource type="Texture2D" uid="uid://c6wnve7ahqo5c" path="res://june/hehe.png" id="7_82xsv"]
 [ext_resource type="Texture2D" uid="uid://cjud625arqbjn" path="res://jeff/secret.png" id="7_vivmo"]
 [ext_resource type="Texture2D" uid="uid://ca0jw7nylpmaf" path="res://jeff/smile.png" id="8_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://c8jx7c214ryw" path="res://world/photo 2.png" id="8_hrvbo"]
 [ext_resource type="Texture2D" uid="uid://dha06jhcfgs4f" path="res://june/yay.png" id="9_ryguw"]
 [ext_resource type="Texture2D" uid="uid://bteq6bebkma1k" path="res://jeff/wave.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cx2ko6w6qolv0" path="res://jeff/wow.png" id="10_074og"]
@@ -37,6 +39,8 @@
 [ext_resource type="PackedScene" uid="uid://cu0igjlne08jj" path="res://recovery center/control_pannel.tscn" id="29_b1qrp"]
 [ext_resource type="Texture2D" uid="uid://r2jqlpofr0r" path="res://jerboa/front_lean.png" id="30_ok6jj"]
 [ext_resource type="Texture2D" uid="uid://dx3s18u1p7p14" path="res://jerboa/front.png" id="31_facbu"]
+[ext_resource type="Texture2D" uid="uid://dfx3544m1us0c" path="res://recovery center/recovery center top layer.png" id="31_qnost"]
+[ext_resource type="Script" uid="uid://bg6hbkmf6hyj" path="res://recovery center/recovery_center.gd" id="31_wnkbs"]
 [ext_resource type="Texture2D" uid="uid://cbqthswj5smp3" path="res://jerboa/back.png" id="32_b1qrp"]
 [ext_resource type="Script" uid="uid://b1uwfb8e7rv44" path="res://jerboa/jerboa.gd" id="33_gngh3"]
 [ext_resource type="Texture2D" uid="uid://b2g4rpae1ea4g" path="res://m/m0001.png" id="37_4lmeg"]
@@ -48,6 +52,12 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
 font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_0n3wm"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_qnost"]
+font_size = 32
 
 [node name="Node2D" type="Node2D"]
 
@@ -81,8 +91,8 @@ offset_left = 336.0
 offset_top = 158.0
 offset_right = 983.0
 offset_bottom = 435.0
-text = "  you found
-the secret!!!!!!"
+text = "this is where the secret used to be,
+but alas, you much search further"
 label_settings = SubResource("LabelSettings_7mycd")
 
 [node name="wall" type="TextureRect" parent="row 1"]
@@ -92,6 +102,7 @@ offset_right = 1055.0
 offset_bottom = 615.0
 texture = ExtResource("1_1bvp3")
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="wall2" type="TextureRect" parent="row 1"]
 offset_left = 907.0
@@ -100,6 +111,7 @@ offset_right = 1953.0
 offset_bottom = 614.0
 texture = ExtResource("1_1bvp3")
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="wall3" type="TextureRect" parent="row 1"]
 offset_left = 1732.0
@@ -108,6 +120,7 @@ offset_right = 2737.0
 offset_bottom = 611.0
 texture = ExtResource("1_1bvp3")
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="wall4" type="TextureRect" parent="row 1"]
 offset_left = 2714.0
@@ -116,6 +129,7 @@ offset_right = 3815.0
 offset_bottom = 610.0
 texture = ExtResource("1_1bvp3")
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="floor" type="TextureRect" parent="row 1"]
 offset_left = -303.0
@@ -125,6 +139,7 @@ offset_bottom = 656.0
 texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="floor2" type="TextureRect" parent="row 1"]
 offset_left = 1024.0
@@ -134,6 +149,7 @@ offset_bottom = 657.0
 texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="floor3" type="TextureRect" parent="row 1"]
 offset_left = 1950.0
@@ -143,6 +159,7 @@ offset_bottom = 657.0
 texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="floor4" type="TextureRect" parent="row 1"]
 offset_left = 2914.0
@@ -152,14 +169,37 @@ offset_bottom = 657.0
 texture = ExtResource("2_lquwl")
 expand_mode = 1
 script = ExtResource("6_272bh")
+strong = true
+
+[node name="Photo1" type="TextureRect" parent="row 1"]
+offset_left = 964.0
+offset_top = 118.0
+offset_right = 1247.0
+offset_bottom = 349.0
+texture = ExtResource("7_0cbny")
+expand_mode = 1
+script = ExtResource("6_272bh")
+
+[node name="Photo2" type="TextureRect" parent="row 1"]
+offset_left = 2447.0
+offset_top = 113.0
+offset_right = 2674.0
+offset_bottom = 384.0
+texture = ExtResource("8_hrvbo")
+expand_mode = 1
+script = ExtResource("6_272bh")
 
 [node name="june" parent="row 1" instance=ExtResource("4_7mycd")]
-offset_left = 1760.0
-offset_top = 190.0
-offset_right = 2092.0
-offset_bottom = 556.0
+z_index = 1
+offset_left = 1601.0
+offset_top = 179.0
+offset_right = 1933.0
+offset_bottom = 545.0
 texture = ExtResource("5_074og")
 script = ExtResource("6_qsp4k")
+respawn_location_1 = Vector2(926, 469)
+respawn_location_2 = Vector2(915, 849)
+respawn_location_3 = Vector2(1048, 982)
 all_dialoge = "!Image stand
 
 !Image yay
@@ -220,7 +260,20 @@ i didnt think you would actually do it kinda crazy
 
 !Image stand
 but at least hes not gonna bug us anymore
-!GoTo KEY KILL LOOP"
+!GoTo KEY KILL LOOP
+~ RESPAWNED
+!Image uhh
+omg what im alive
+wait you killed me
+!Image aaaa
+aaaa
+!Image uhh
+but im alive now
+!Image stand
+ooooooohhhhhh you recovered me
+!Image yay
+thanks for that
+!Image stand"
 images = Dictionary[StringName, Texture2D]({
 &"aaaa": ExtResource("6_cegan"),
 &"evil": ExtResource("10_d13ii"),
@@ -243,22 +296,27 @@ expand_mode = 1
 script = ExtResource("6_272bh")
 
 [node name="table2" type="TextureRect" parent="row 1"]
-offset_left = 1689.0
+z_index = 2
+offset_left = 1541.0
 offset_top = 415.0
-offset_right = 2291.0
+offset_right = 2143.0
 offset_bottom = 628.0
 texture = ExtResource("4_272bh")
 expand_mode = 1
 script = ExtResource("6_272bh")
 
 [node name="jeff" parent="row 1" instance=ExtResource("4_7mycd")]
+z_index = 1
 texture_filter = 1
-offset_left = 263.0
-offset_top = 182.0
-offset_right = 594.0
-offset_bottom = 521.0
+offset_left = 253.0
+offset_top = 172.0
+offset_right = 584.0
+offset_bottom = 511.0
 texture = ExtResource("9_yaehf")
 script = ExtResource("14_1u8w0")
+respawn_location_1 = Vector2(906, 500)
+respawn_location_2 = Vector2(925, 850)
+respawn_location_3 = Vector2(662, 958)
 all_dialoge = "!Image yay
 Hey Player, Click Me!
 ~ LOOP
@@ -312,8 +370,15 @@ Well That  Is All I Have To Say! You Can Click Me Again To Loop My Dialoge!
 !Image dead
 
 !GoTo HIT BY KEY
-
-"
+~ RESPAWNED
+!Image yay
+Yay You Recovered Me
+!Image smile
+You Are So Wonderful!
+!Image hmmm
+There Is More Dialoge To Say But
+!Image sad
+But Qualia Hasnt Written It Yet"
 images = Dictionary[StringName, Texture2D]({
 &"dead": ExtResource("20_d13ii"),
 &"hmmm": ExtResource("5_ycdy4"),
@@ -324,6 +389,7 @@ images = Dictionary[StringName, Texture2D]({
 &"wow": ExtResource("10_074og"),
 &"yay": ExtResource("11_cegan")
 })
+explodeable = false
 
 [node name="Node2D" type="Node2D" parent="row 1"]
 skew = 0.523599
@@ -338,6 +404,7 @@ scale = Vector2(1.33052, 1.32394)
 texture = ExtResource("1_1bvp3")
 expand_mode = 1
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="Node2D2" type="Node2D" parent="row 1"]
 skew = -0.523599
@@ -352,6 +419,7 @@ scale = Vector2(1.33052, 1.32394)
 texture = ExtResource("1_1bvp3")
 expand_mode = 1
 script = ExtResource("6_272bh")
+strong = true
 
 [node name="Node2D3" type="Node2D" parent="row 1"]
 scale = Vector2(0.8, 0.8)
@@ -361,6 +429,7 @@ offset_left = 3815.0
 offset_top = -11.25
 offset_right = 4586.0
 offset_bottom = 708.75
+strong = true
 
 [node name="row 2" type="Node2D" parent="."]
 
@@ -369,19 +438,33 @@ position = Vector2(1869, 1005)
 scale = Vector2(0.462897, 0.441489)
 texture = ExtResource("23_xuqvo")
 
-[node name="RecoveryCenter" type="Sprite2D" parent="row 2/CaveFull"]
+[node name="RecoveryCenter" type="TextureRect" parent="row 2/CaveFull"]
 texture_filter = 1
-position = Vector2(-1801.7, -491.518)
+offset_left = -2378.5
+offset_top = -801.832
+offset_right = -1223.5
+offset_bottom = -181.832
 texture = ExtResource("28_h8e4i")
+script = ExtResource("31_wnkbs")
+strong = true
+
+[node name="RecoveryCenterTopLayer" type="Sprite2D" parent="row 2/CaveFull/RecoveryCenter"]
+z_index = 2
+texture_filter = 1
+position = Vector2(576.799, 310.314)
+texture = ExtResource("31_qnost")
 
 [node name="ControlPannel" parent="row 2/CaveFull" instance=ExtResource("29_b1qrp")]
-position = Vector2(-3316.07, 550.41)
+offset_left = -3529.94
+offset_top = 298.988
+offset_right = -2842.94
+offset_bottom = 797.988
 
 [node name="arrow_out_of_vault" type="TextureRect" parent="row 2"]
-offset_left = 3510.0
-offset_top = 1120.0
-offset_right = 3813.0
-offset_bottom = 1415.0
+offset_left = 3436.0
+offset_top = 1121.0
+offset_right = 3739.0
+offset_bottom = 1416.0
 scale = Vector2(1, -1)
 texture = ExtResource("23_0odxb")
 expand_mode = 1
@@ -389,12 +472,16 @@ script = ExtResource("6_272bh")
 explodeable = false
 
 [node name="jerboa" parent="row 2" instance=ExtResource("4_7mycd")]
+z_index = 1
 offset_left = 1853.0
 offset_top = 879.0
 offset_right = 2194.0
 offset_bottom = 1038.0
 texture = ExtResource("28_4k2k6")
 script = ExtResource("33_gngh3")
+respawn_location_1 = Vector2(865, 682)
+respawn_location_2 = Vector2(886, 961)
+respawn_location_3 = Vector2(1853, 879)
 all_dialoge = "!Image side
 
 !Image front
@@ -425,6 +512,7 @@ t o   s h o w   y o u
 t h i s
 c o u l d   b e   y o u r s
 f o r   a   d o l l a r
+!FlagTrue jerboa_showed_gun
 !Image front_lean
 c o n s i d e r   t h a t\\no f f e r
 !Exec hide_gun
@@ -445,7 +533,7 @@ p l e a s e   p r o v i d e\\nm o n e y
 ~ TALK ABOUT MONEY FIRST
 !Image front
 
-i   s e e   y o u   w i s h\\n to p u r c h a s e
+i   s e e   y o u   w i s h\\nt o   p u r c h a s e
 ~ CHECK MONEY
 !Load 0
 !If == money
@@ -480,8 +568,8 @@ f o r   y o u
 !Image front
 i t   i s   y o u r s
 !Exec hide_gun
-!FlagTrue has_gun
 !FlagInc gun_lvl
+!FlagTrue has_gun
 
 i t   d o e s   n o t
 d o
@@ -500,6 +588,7 @@ i t   w i l l\\ns c a r e   h i m
 
 !Image side_lean
 
+~ RESPAWNED
 !GoTo LOOP POINT 2"
 images = Dictionary[StringName, Texture2D]({
 &"back": ExtResource("32_b1qrp"),
@@ -508,6 +597,7 @@ images = Dictionary[StringName, Texture2D]({
 &"side": ExtResource("28_4k2k6"),
 &"side_lean": ExtResource("29_0rl1p")
 })
+strong = true
 
 [node name="gun" parent="row 2/jerboa" instance=ExtResource("40_wnkbs")]
 visible = false
@@ -607,11 +697,13 @@ LEAVE ME ALONE!!!!!!
 !Halt
 ~ GENOCIDE
 !Image right
-!Exec arrive
+!Exec appear
+~ GENOCIDE ALREADY HERE
+!Image right
 Now look what you did
 You killed everyone
 And you destroyed the means of bringing them back to life
-All to what means?
+All for what purpose?
 \"Finding the secret?\"
 I am disapointed
 !Image left
@@ -620,6 +712,7 @@ Very disapointed
 So now its time for you to die as well
 !Image evil
 I have been waiting for this moment
+HAHAHAHAHAHAHAHAHA
 !Exec game_over"
 images = Dictionary[StringName, Texture2D]({
 &"evil": ExtResource("37_4lmeg"),
@@ -631,11 +724,63 @@ explodeable = false
 
 [node name="Inventory" parent="Camera2D" instance=ExtResource("22_ryguw")]
 visible = false
-offset_left = -578.0
+z_index = 10
+offset_left = -640.0
 offset_top = -324.0
-offset_right = 582.0
+offset_right = 645.0
 offset_bottom = 331.0
+
+[node name="blinders" type="ColorRect" parent="Camera2D"]
+visible = false
+z_index = 11
+offset_left = -3852.0
+offset_top = -335.0
+offset_right = -625.0
+offset_bottom = 351.0
+color = Color(0, 0, 0, 1)
+
+[node name="blinders2" type="ColorRect" parent="Camera2D/blinders"]
+layout_mode = 0
+offset_left = 4497.0
+offset_top = -2.0
+offset_right = 7644.0
+offset_bottom = 684.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Camera2D/blinders/blinders2"]
+layout_mode = 0
+offset_left = -1587.06
+offset_top = 447.0
+offset_right = -1387.06
+offset_bottom = 470.0
+rotation = -0.813323
+text = "your screen is so wide wtf"
+
+[node name="Label2" type="Label" parent="Camera2D/blinders/blinders2"]
+layout_mode = 0
+offset_left = 942.936
+offset_top = 407.0
+offset_right = 1281.94
+offset_bottom = 430.0
+text = "like actually the width of this thing is insane"
+label_settings = SubResource("LabelSettings_0n3wm")
+
+[node name="Label3" type="Label" parent="Camera2D/blinders/blinders2"]
+layout_mode = 0
+offset_left = -4211.06
+offset_top = 285.0
+offset_right = -3513.06
+offset_bottom = 522.0
+text = "your screen is almost as wide as your mother
+
+
+
+          lol"
+label_settings = SubResource("LabelSettings_qnost")
 
 [connection signal="clicked" from="row 1/arrow_into_hole" to="Camera2D" method="_on_arrow_into_hole_clicked"]
 [connection signal="travel_through_vault" from="row 1/Node2D3/vault" to="Camera2D" method="_on_vault_travel_through_vault"]
+[connection signal="jeff_recovered" from="row 2/CaveFull/ControlPannel" to="row 1/jeff" method="_on_control_pannel_jeff_recovered"]
+[connection signal="jerboa_recovered" from="row 2/CaveFull/ControlPannel" to="row 2/jerboa" method="_on_control_pannel_jerboa_recovered"]
+[connection signal="june_recovered" from="row 2/CaveFull/ControlPannel" to="row 1/june" method="_on_control_pannel_june_recovered"]
 [connection signal="clicked" from="row 2/arrow_out_of_vault" to="Camera2D" method="_on_arrow_out_of_vault_clicked"]
