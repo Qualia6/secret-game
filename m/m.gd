@@ -41,7 +41,10 @@ func leave_angry() -> Signal:
 	animation_state = ANIMATION_STATE.LEAVE_ANGRY
 	return done_moving
 
+signal game_is_over
+
 func game_over():
+	game_is_over.emit()
 	get_tree().change_scene_to_file("res://game_over.tscn")
 
 signal done_moving
@@ -64,7 +67,7 @@ func _process(delta: float) -> void:
 		if animation_state == ANIMATION_STATE.LEAVE or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
 			visible = false
 	var verticality_t = get_vertical_t()
-	$sound.volume_db = verticality_t * -20
+	$sound.volume_db = verticality_t * -20 + 10
 	position = Vector2(-195, -85 + verticality_t * 500)
 	if animation_state == ANIMATION_STATE.APPEAR_ANGRY or animation_state == ANIMATION_STATE.LEAVE_ANGRY:
 		if animation_t != 1.:

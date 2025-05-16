@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=69 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cfyw3rxlkneoi" path="res://world/grass.jpg" id="1_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://world/1bcsjba9.png" id="1_1bvp3"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dt121vheh8bam" path="res://june/uhh_money.png" id="17_wnkbs"]
 [ext_resource type="Texture2D" uid="uid://br6n4l5qggw1j" path="res://jeff/dead.png" id="20_d13ii"]
 [ext_resource type="PackedScene" uid="uid://cuunrq33jm0fm" path="res://vault/vault.tscn" id="21_d13ii"]
+[ext_resource type="Texture2D" uid="uid://cy84qg4tx25k2" path="res://june/yap.png" id="21_pjyto"]
 [ext_resource type="PackedScene" uid="uid://dnavoepbtdcge" path="res://inventory/inventory.tscn" id="22_ryguw"]
 [ext_resource type="Texture2D" uid="uid://bghmickhvwkcn" path="res://arrow.png" id="23_0odxb"]
 [ext_resource type="Texture2D" uid="uid://bhqmbx8nrrk3f" path="res://cave/cave_full.jpg" id="23_xuqvo"]
@@ -265,12 +266,15 @@ hit jeff!
 !Image evil
 hit jeff! hit jeff! hit jeff!
 hehehe
+
+!Image hehe
+ill give you a dollar if you kill him
 !GoTo HIT JEFF
 
 
 
 ~ WOW KEY KILL
-!Image stand
+!Image yap
 wow you actually killed him
 im impressed
 !Image uhh
@@ -283,9 +287,56 @@ well here is you dollar
 
 i didnt think you would actually do it kinda crazy
 
-!Image stand
+!Image yap
 but at least hes not gonna bug us anymore
 !GoTo KEY KILL LOOP
+
+
+
+~ KEY HINT
+!Image uhh
+bruhhhhh jeff is yapping about keys again
+~ KEY HINT LOOP
+!Image aaaa
+omg that always confused me for the looooooongest time
+!Image yap
+i thought he meant \"\"\"key\"\"\" like what you stick in a vault
+!Image hehe
+or use to kill people that yap too much
+!Image aaaa
+but noooooooooooo
+!Image yap
+he meant \"\"\"key\"\"\" as in \"\"\"keyboard\"\"\"
+!Image aaaa
+wtf is a \"\"\"keyboard\"\"\"?!
+!Image yap
+and how can you use a \"\"\"keyboard\"\"\" to do incantations
+!Image aaaa
+like what does that eeeevvvveeeennn mean?!?!?!
+!Image uhh
+idk
+!Image stand
+i think he gets these weeerreeeiiirrrrd ideas from that other guy
+!Image uhh
+i think his name is m?
+!Image stand
+i dont think you met them yet
+but this \"\"\"being\"\"\" acts kinda high and mighty
+!Image yap
+acts like hes not even from this world or something
+!Image stand
+ive over heard them talking to jerboa
+about the differences between \"\"\"primary\"\"\" and \"\"\"alternate\"\"\" timelines.
+i think he said that he can like \"\"\"shift\"\"\" between them or something
+!Image uhh
+idk if i believe that
+!Image stand
+now i try to stay away from that weirdo
+
+i also try to say away from jeff
+!Image yap
+i cant believe that he is yapping about keys again
+!GoTo KEY HINT LOOP
 
 
 
@@ -294,7 +345,7 @@ but at least hes not gonna bug us anymore
 aaaa
 !Image uhh
 wait omg im alive
-but yooooou killed me
+but yoooooou killed me
 !Image uhh
 but im alive now
 !Image stand
@@ -320,11 +371,12 @@ although he is pretty darn annoying sometimes
 the secret doooeeess seem kindaaaa interesting
 !Image uhh
 but idk about being in a small taxi with those two for an extended period of time
-!Image stand
+!Image yap
 what am i yapping about
-ive wanted to know what secret is for like foorrrreeevvveeerrrrrrr
+!Image stand
+ive wanted to know what secret is for like fooooorrrrrreeeverrrrrrrr
 !Image yay
-im actually kinda getting excited over the possibilty of finding out
+im actually kinda getting excited over the possibility of finding out
 !Image stand
 ok ill go
 !Image hehe
@@ -334,7 +386,8 @@ jk
 meet you there
 !FlagTrue june_up
 !FlagTrue june_moved
-!Exec leave_up"
+!Exec leave_up
+"
 images = Dictionary[StringName, Texture2D]({
 &"aaaa": ExtResource("6_cegan"),
 &"evil": ExtResource("10_d13ii"),
@@ -344,6 +397,7 @@ images = Dictionary[StringName, Texture2D]({
 &"stand": ExtResource("5_074og"),
 &"uhh": ExtResource("16_qnost"),
 &"uhh_money": ExtResource("17_wnkbs"),
+&"yap": ExtResource("21_pjyto"),
 &"yay": ExtResource("9_ryguw")
 })
 
@@ -382,9 +436,9 @@ all_dialoge = "!Image yay
 Hey Player, Click Me!
 ~ LOOP
 !Image wave
-Hello! My Name is Jeff! Jeff The Turorial NPC!
+Hello! My Name is Jeff! Jeff The Tutorial NPC!
 !Image smile
-I Have FOUR Very Imporant Things To Tell You!
+I Have FOUR Very Important Things To Tell You!
 !Image wow
 The FOURTH Will SUPRISE And SHOCK You!
 !Image smile
@@ -392,7 +446,7 @@ FIRST: Use RIGHT And LEFT Arrow Keys To Move
 SECOND: Press i To Open And Close Your Inventory
 When You Have An Item, You Can Click It To Hold It
 !Image yay
-If You Are Not Holding An Item Noboy Will Know That You Have It!
+If You Are Not Holding An Item Nobody Will Know That You Have It!
 !Image wow
 THIRD: I Have Been Told That There Is A Secret Some Where Around Here
 !Image hmmm
@@ -407,7 +461,7 @@ Well The SHOCKING FOURTH As I Promised
 !Image hmmm
 Wait No I Just Had A Thought
 There IS Still A Secret
-Just The State Of The Existance Of A Secret Is Known
+Just The State Of The Existence Of A Secret Is Known
 Wait Actually I Think I Said That At The Start
 !Image sad
 Yea I Think I Did Oops My Bad
@@ -421,7 +475,7 @@ OK,  FOURTH
 !Image wow
 I Have Been Told That There Is A...
 !Image secret
-i think this is not really widly known so i need to say this quietly
+i think this is not really widely known so i need to say this quietly
 i have been told by... sources...
 that there is a \"doomsday device\" somewhere around here
 !Image wow
@@ -448,7 +502,7 @@ So It Is Only Four Things To Tell You After All
 Thats Crazy
 
 !Image hmmm
-I Dont Even Remeber What I Was Saying Before M Arrived
+I Dont Even Remember What I Was Saying Before M Arrived
 Ill Just Loop Over
 !FlagTrue jeff_yap
 !GoTo LOOP
@@ -504,8 +558,8 @@ AAAAAA
 AAAAAA
 I Thought That You Where Holding The ... Err
 !Image secret
-i thought you where holding the dooms day device
-it looks very simular to that
+i thought you were holding the dooms day device
+it looks very similar to that
 !Image hmmm
 Suspiciously Simular
 Sussy
@@ -530,11 +584,11 @@ If There Was A Ceiling
 Shortly Above My Head
 Then I Would I Have Launched Right Through It
 Which Would Have Created A Hole
-A Hole That Would Presemably Lead To Somewhere
+A Hole That Would Presumably Lead To Somewhere
 !Image yay
 Regardless
 !Image smile
-I Remebered That
+I Remembered That
 I Have Three Key Things To Tell You
 !Image yay
 You Can Summon A Very Important Being
@@ -542,25 +596,26 @@ You Can Summon A Very Important Being
 !GoTo ALREADY TALKED TO M
 A Being That Deals In Money
 !Image wow
-A Being That Love Money So Much That
+A Being That Loves Money So Much That
 They Named Themselves After The First Letter!
 !Image yay
 They Are Very Important So Please Dont Waste Their Time
 !Image sad
 Btw, I Am Sorry I Forgot To Tell You All This Earlier
-I Completly Forgot
+I Completely Forgot
 But The Rocks Reminded Me
 !Image smile
 I Love Rocks
 !Image yay
 Anyway Here Are The Key Facts
-~ TELL KEY FACTS
+!FlagTrue jeff_said_puzzle
 !Image secret
 1. that which is not primary/conventional
 2. that which moves/exchanges
 3. that which is the beings name
 !Image yay
 Together Form An Incantation
+~ TELL KEY FACTS
 To Summon The Being That Deals In Money!
 !Image smile
 Now I Am Going To Go Back To Appreciating The Rocks
@@ -590,9 +645,9 @@ M Doesnt Like When Anyone Says That Straight Up
 ~ SKIP SORRY ABOUT M
 !Image hmmm
 You Know I Wonder If M Being So Important
-Knows Anything About The Doomsday Device
+Knows Anything About The Dooms Day Device
 They Are Always Talking About Timelines
-Maybe A Doomsday Device Might Be
+Maybe A Dooms Day Device Might Be
 Might Be A Way A Timeline Can End
 I Wonder What Other Ways A Timeline Can End Are
 !Image sad
@@ -606,11 +661,11 @@ Idk
 Anyway I Am Going To Go Back To Admiring The Rocks
 I Love Rocks
 They Are So Strong
-I Bet No Doomsday Device Could Hurt Them
+I Bet No Dooms Day Device Could Hurt Them
 !Image hmmm
-Or Ceilling Tiles
-Rocks And Ceilling Would Probably Be
-The Only Things To Survive A Doomsday Device
+Or Ceiling Tiles
+Rocks And Ceiling Would Probably Be
+The Only Things To Survive A Dooms Day Device
 !Image smile
 I Fr*cking Love Rocks
 
@@ -629,7 +684,7 @@ dodge the doomsday device
 Looking Thing That You Are Holding
 It Seems I Launched Right Through Ceiling
 And Created A Hole
-A Hole That  Presemably Leads Somewhere
+A Hole That  Presumably Leads Somewhere
 !FlagTrue jeff_mentioned_hole
 !Halt
 
@@ -642,7 +697,8 @@ This Is Fantastic I Always Wanted To Know What The Secret Is!
 !Image smile
 Ill Meet You Up There!
 !FlagTrue jeff_up
-!Exec leave_up"
+!Exec leave_up
+"
 images = Dictionary[StringName, Texture2D]({
 &"dead": ExtResource("20_d13ii"),
 &"hmmm": ExtResource("5_ycdy4"),
@@ -658,11 +714,13 @@ explodeable = false
 [node name="hurt" type="AudioStreamPlayer2D" parent="row 1/jeff"]
 stream = ExtResource("31_vke2r")
 pitch_scale = 1.1
+playback_type = 1
 
 [node name="scream" type="AudioStreamPlayer2D" parent="row 1/jeff"]
 stream = ExtResource("32_ruth0")
 volume_db = -15.0
 pitch_scale = 0.9
+playback_type = 1
 
 [node name="Money" type="TextureRect" parent="row 1"]
 offset_left = 1694.0
@@ -777,6 +835,7 @@ offset_bottom = 797.988
 
 [node name="chime" type="AudioStreamPlayer2D" parent="row 2/CaveFull/ControlPannel"]
 stream = ExtResource("43_uit24")
+playback_type = 1
 
 [node name="arrow_out_of_vault" type="TextureRect" parent="row 2"]
 offset_left = 3436.0
@@ -1121,10 +1180,11 @@ ACCEL_RATE = 2.0
 min_x = 360.064
 max_x = 3317.15
 
-[node name="music" type="AudioStreamPlayer2D" parent="Camera2D"]
+[node name="music" type="AudioStreamPlayer" parent="Camera2D"]
 stream = ExtResource("54_rm4vd")
-volume_db = -7.0
+volume_db = -15.0
 autoplay = true
+playback_type = 1
 
 [node name="m" parent="Camera2D" instance=ExtResource("4_7mycd")]
 visible = false
@@ -1254,6 +1314,7 @@ explodeable = false
 
 [node name="sound" type="AudioStreamPlayer2D" parent="Camera2D/m"]
 stream = ExtResource("56_rnkwl")
+playback_type = 1
 
 [node name="Inventory" parent="Camera2D" instance=ExtResource("22_ryguw")]
 visible = false
@@ -1320,3 +1381,4 @@ label_settings = SubResource("LabelSettings_qnost")
 [connection signal="jerboa_recovered" from="row 2/CaveFull/ControlPannel" to="row 2/jerboa" method="_on_control_pannel_jerboa_recovered"]
 [connection signal="june_recovered" from="row 2/CaveFull/ControlPannel" to="row 1/june" method="_on_control_pannel_june_recovered"]
 [connection signal="clicked" from="row 2/arrow_out_of_vault" to="Camera2D" method="_on_arrow_out_of_vault_clicked"]
+[connection signal="game_is_over" from="Camera2D/m" to="Camera2D" method="_on_m_game_is_over"]

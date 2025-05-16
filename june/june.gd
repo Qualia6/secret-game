@@ -20,16 +20,23 @@ func leave_up():
 var already_go_upped: bool = false
 
 func _clicked() -> void:
+	if GLOBAL.flags[&"june_dead"]: return
 	if GLOBAL.flags[&"jerboa_up"] and not already_go_upped:
 		already_go_upped = true
 		goto("GO UP")
 		return
 	super._clicked()
 
+var alerady_key_hint: bool = false
+
 func _updated():
 	if not_realized_jeff_key_killed and GLOBAL.flags[&"jeff_killed_by_key"]:
 		goto("WOW KEY KILL")
 		not_realized_jeff_key_killed = false
+	if GLOBAL.flags[&"jeff_said_puzzle"] and not GLOBAL.flags[&"june_moved"] and not alerady_key_hint:
+		goto("KEY HINT")
+		alerady_key_hint = true
+
 
 func _about_to_explode():
 	show_image(&"aaaa")

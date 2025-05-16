@@ -34,26 +34,36 @@ func _process(delta: float) -> void:
 
 func _ready():
 	position = Vector2(600, 320)
+	go_to_row_1()
 	$blinders.visible = true
 	zoom = Vector2(1., 1.)
 
-func _on_vault_travel_through_vault() -> void:
-	position.y = 1000
-
-func _on_arrow_out_of_vault_clicked() -> void:
-	position.y = 320
-
-func _on_arrow_into_hole_clicked() -> void:
-	position.y = 1000
-
-func _on_ceilling_hole_utilize_hole() -> void:
+func go_to_row_0():
 	position.y = -455
+	set_reverb(false)
 
-func _on_row_0_arrow_back_down() -> void:
+func go_to_row_1():
 	position.y = 320
+	set_reverb(false)
+
+func go_to_row_2():
+	position.y = 1000
+	set_reverb(true)
+
+func set_reverb(state: bool):
+	AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index("Master"), 0, state)
+
+func _on_vault_travel_through_vault() -> void: go_to_row_2()
+func _on_arrow_out_of_vault_clicked() -> void: go_to_row_1()
+func _on_arrow_into_hole_clicked() -> void: go_to_row_2()
+func _on_ceilling_hole_utilize_hole() -> void: go_to_row_0()
+func _on_row_0_arrow_back_down() -> void: go_to_row_1()
 
 func _on_row_0_fix_camera_position() -> void:
 	$blinders.visible = false
 	before_animation_position = position
 	state = CAMERA_STATE.MOVE
 	animation_t = 0.
+
+func _on_m_game_is_over() -> void:
+	set_reverb(false)

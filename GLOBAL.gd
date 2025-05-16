@@ -28,6 +28,7 @@ const starting_flags = {
 	&"jeff_up": false,
 	&"june_up": false,
 	&"game_end": false,
+	&"jeff_said_puzzle": false,
 }
 
 static var flags: Dictionary = starting_flags.duplicate()

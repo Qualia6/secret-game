@@ -21,6 +21,7 @@ var already_go_upped: bool = false
 
 func _clicked() -> void:
 	if respawning or jumping: return
+	if GLOBAL.flags[&"jeff_dead"]: return
 	if INVENTORY.selected_item_id == &"key":
 		$hurt.play()
 		if already_respawned: save_line_as_previous()
@@ -83,7 +84,7 @@ func go_to_previous_line():
 	if previous_line == -1:
 		push_error("tried to go to previous but there is no previous")
 	#print("loading ", previous_line)
-	gotoline(previous_line - 1)
+	gotoline(previous_line)
 	show_image(previous_expression)
 	previous_line = -1
 
@@ -118,6 +119,7 @@ func jump():
 var knows_that_talked_to_m: bool = false
 
 func _updated():
+	if GLOBAL.flags[&"jeff_dead"]: return
 	if GLOBAL.flags[&"spoken_to_m"]:
 		if not knows_that_talked_to_m:
 			knows_that_talked_to_m = true

@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://d075qivxks1dq"]
+[gd_scene load_steps=10 format=3 uid="uid://d075qivxks1dq"]
 
 [ext_resource type="Texture2D" uid="uid://n6w2cojr2tfr" path="res://m/m0002.png" id="1_y26ei"]
 [ext_resource type="Script" uid="uid://ddi3kcyevqayt" path="res://game_over_retry_button.gd" id="1_yxx3c"]
+[ext_resource type="AudioStream" uid="uid://cdmjd1ou7ape8" path="res://Eggs.ogg" id="3_ccer4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yxx3c"]
 font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_8u835"]
+font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_ccer4"]
 font_size = 26
@@ -135,6 +139,11 @@ layout_mode = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_yxx3c")
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "aka the genocide ending"
+label_settings = SubResource("LabelSettings_8u835")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
@@ -158,7 +167,7 @@ expand_mode = 1
 [node name="Label2" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "             Hahahahahahahahahahahahaha
-←         you died
+<=         you died
             that is very ammusing"
 label_settings = SubResource("LabelSettings_ccer4")
 
@@ -167,5 +176,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_28vn7")
 }
 autoplay = "played"
+
+[node name="Eggs" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ccer4")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer2/Button" to="HBoxContainer2/Button" method="_on_pressed"]
