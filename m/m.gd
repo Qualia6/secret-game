@@ -78,10 +78,9 @@ func _process(delta: float) -> void:
 var arrive: int = 0
 var imma_kill_you_now: bool = false
 
-func _input(event: InputEvent) -> void:
-	if GLOBAL.flags[&"game_end"]: return
-	if not event.is_action_pressed("cave money"): return
+func summoned():
 	if visible: return
+	if GLOBAL.flags[&"game_end"]: return
 	if animation_state != ANIMATION_STATE.NONE: return
 	if imma_kill_you_now: return
 	arrive += 1
@@ -90,6 +89,14 @@ func _input(event: InputEvent) -> void:
 		2: goto("ARRIVE SECOND")
 		3: goto("ARRIVE THIRD")
 		_: goto("ARRIVE FOURTH")
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("cave money"):
+		summoned()
+
+func _on_photo_1_secret() -> void:
+	summoned()
+
 
 func _updated():
 	if GLOBAL.flags[&"jeff_dead"] and GLOBAL.flags[&"june_dead"] and GLOBAL.flags[&"jerboa_dead"] and \

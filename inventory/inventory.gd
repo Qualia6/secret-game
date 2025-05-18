@@ -39,14 +39,19 @@ func _updated():
 	
 	$Empty.visible = items == 0
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory") and not GLOBAL.flags[&"game_end"]:
+
+func inventory_toggle_event():
+	if not GLOBAL.flags[&"game_end"]:
 		visible = not visible
 		if not visible:
 			$animation.pause()
 		else:
 			$animation.play()
 
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		inventory_toggle_event()
 
 
 func _on_item_clicked(item: CanvasItem, id: StringName) -> void:
@@ -77,3 +82,7 @@ func _gui_input(event: InputEvent) -> void:
 func _process(delta: float):
 	if selected_item_object != null:
 		selected_item_object.get_parent().rotation += delta * 20
+
+
+func _on_mobile_inventory_pressed() -> void:
+	inventory_toggle_event()

@@ -12,10 +12,15 @@ var state: CAMERA_STATE = CAMERA_STATE.CONTROLLED
 var before_animation_position: Vector2
 var animation_t: float = 0.
 
+func get_desired_direction() -> float:
+	var right: int = Input.is_action_pressed("ui_right") or %mobile_right.button_pressed
+	var left: int = Input.is_action_pressed("ui_left") or %mobile_left.button_pressed
+	return right - left
+
 func _process(delta: float) -> void:
 	match state:
 		CAMERA_STATE.CONTROLLED:
-			var desired_dir: float = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+			var desired_dir: float = get_desired_direction()
 			var no_keys_presssed_multiplier = 2. if (Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left")) else 4.
 			var jerk: float = max(abs(desired_dir - acceleration) * no_keys_presssed_multiplier, 1) * ACCEL_RATE
 			if desired_dir > acceleration:
@@ -37,6 +42,15 @@ func _ready():
 	go_to_row_1()
 	$blinders.visible = true
 	zoom = Vector2(1., 1.)
+	%mobile_ui.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		GLOBAL.update_flag(&"mobile", false)
+		%mobile_ui.visible = false
+	if event is InputEventScreenTouch:
+		GLOBAL.update_flag(&"mobile", true)
+		%mobile_ui.visible = true
 
 func go_to_row_0():
 	position.y = -455

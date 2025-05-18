@@ -56,11 +56,11 @@ func _process(delta: float) -> void:
 			respawning = false
 			waiting_for_exec = false
 			position = respawn_location_3
-			if already_respawned:
+			if already_respawned or GLOBAL.flags[&"jeff_jumped_before"]:
 				goto("RESPAWN AGAIN")
 			else:
-				already_respawned = true
 				goto("RESPAWNED")
+			already_respawned = true
 	elif jumping:
 		jump_t += delta
 		if jump_t > 1.:
@@ -83,20 +83,24 @@ var previous_expression: StringName
 func go_to_previous_line():
 	if previous_line == -1:
 		push_error("tried to go to previous but there is no previous")
-	#print("loading ", previous_line)
+	print("loading ", previous_line)
 	gotoline(previous_line)
 	show_image(previous_expression)
 	previous_line = -1
 
 func save_line_as_previous():
 	if previous_line == -1:
-		#print("saving ", current_dialoge)
+		print("saving ", current_dialoge)
 		previous_line = current_dialoge
 		previous_expression = current_image_name
-	#else:
-		#print("not saving ", current_dialoge)
+	else:
+		print("not saving ", current_dialoge)
+
+func clear_saved():
+	previous_line = -1
 
 func jump():
+	GLOBAL.update_flag(&"jeff_stop_scaring_me", !GLOBAL.flags[&"jeff_stop_scaring_me"])
 	$scream.play()
 	if GLOBAL.flags[&"jeff_jumped_before"]:
 		jump_height = 400
@@ -110,6 +114,7 @@ func jump():
 			%CeillingHole.appear()
 		else:
 			goto("JUMP CAVE FIRST")
+			clear_saved()
 	
 	jumping = true
 	waiting_for_exec = true

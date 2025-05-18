@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://2yr83b0qkao1"]
+[gd_scene load_steps=70 format=3 uid="uid://2yr83b0qkao1"]
 
 [ext_resource type="Texture2D" uid="uid://cfyw3rxlkneoi" path="res://world/grass.jpg" id="1_0rl1p"]
 [ext_resource type="Texture2D" uid="uid://cptolfidr2hbk" path="res://world/1bcsjba9.png" id="1_1bvp3"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ca0jw7nylpmaf" path="res://jeff/smile.png" id="8_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://c8jx7c214ryw" path="res://world/photo 2.png" id="8_hrvbo"]
 [ext_resource type="Texture2D" uid="uid://dha06jhcfgs4f" path="res://june/yay.png" id="9_ryguw"]
+[ext_resource type="Script" uid="uid://n1i1xuuvq1e1" path="res://world/photo_1.gd" id="9_sm6fg"]
 [ext_resource type="Texture2D" uid="uid://bteq6bebkma1k" path="res://jeff/wave.png" id="9_yaehf"]
 [ext_resource type="Texture2D" uid="uid://cx2ko6w6qolv0" path="res://jeff/wow.png" id="10_074og"]
 [ext_resource type="Texture2D" uid="uid://eeggkph6ri8t" path="res://june/evil.png" id="10_d13ii"]
@@ -196,13 +197,14 @@ script = ExtResource("6_272bh")
 strong = true
 
 [node name="Photo1" type="TextureRect" parent="row 1"]
+unique_name_in_owner = true
 offset_left = 964.0
 offset_top = 136.0
 offset_right = 1247.0
 offset_bottom = 367.0
 texture = ExtResource("7_0cbny")
 expand_mode = 1
-script = ExtResource("6_272bh")
+script = ExtResource("9_sm6fg")
 
 [node name="Photo2" type="TextureRect" parent="row 1"]
 offset_left = 2447.0
@@ -293,6 +295,27 @@ but at least hes not gonna bug us anymore
 
 
 
+~ MOBILE HINT
+!Image yap
+regardless, i know a muuuuuuch better way to do that
+a method that does NOT require arcane external devices
+!Image stand
+you see that painting of an image over there?
+!Image yay
+well if you hit it in a specific manner then that \"\"\"being\"\"\" is summoned
+!Image stand
+1. hit it then wait 2 seconds
+2. hit it 6 times quickly then wait 3 seconds
+3. hit 5 more times quickly
+!Image yay
+if you do that exactly then m should be summoned
+!Image yap
+i mean if you had whatever a \"\"\"keyboard\"\"\" is then what jeff is saying would probably work
+why do you even want to summon them anyway?
+!GoTo HINT MERGE
+
+
+
 ~ KEY HINT
 !Image uhh
 bruhhhhh jeff is yapping about keys again
@@ -309,6 +332,8 @@ but noooooooooooo
 he meant \"\"\"key\"\"\" as in \"\"\"keyboard\"\"\"
 !Image aaaa
 wtf is a \"\"\"keyboard\"\"\"?!
+!IfFlag mobile
+!GoTo MOBILE HINT
 !Image yap
 and how can you use a \"\"\"keyboard\"\"\" to do incantations
 !Image aaaa
@@ -319,6 +344,11 @@ idk
 i think he gets these weeerreeeiiirrrrd ideas from that other guy
 !Image uhh
 i think his name is m?
+!GoTo HINT MERGE
+
+
+
+~ HINT MERGE
 !Image stand
 i dont think you met them yet
 but this \"\"\"being\"\"\" acts kinda high and mighty
@@ -548,14 +578,36 @@ They Are So Strong
 
 ~ JUMP AGAIN
 !Image wow
+!IfFlag jeff_stop_scaring_me
+!GoTo JUMP AGAIN ALT
 AAAAAA
 !Exec go_to_previous_line
 
 
 
+~ JUMP AGAIN ALT
+STOP SCARING ME WITH... THAT...
+!Exec go_to_previous_line
+
+
+
+
 ~ JUMP CAVE FIRST
 !Image wow
+!IfFlag jeff_stop_scaring_me
+!GoTo JUMP CAVE FIRST ALT
 AAAAAA
+!GoTo JUMP CAVE FIRST CONT
+
+
+
+~ JUMP CAVE FIRST ALT
+STOP SCARING ME WITH... THAT...
+!GoTo JUMP CAVE FIRST CONT
+
+
+
+~ JUMP CAVE FIRST CONT
 I Thought That You Where Holding The ... Err
 !Image secret
 i thought you were holding the dooms day device
@@ -609,13 +661,13 @@ I Love Rocks
 !Image yay
 Anyway Here Are The Key Facts
 !FlagTrue jeff_said_puzzle
+~ TELL KEY FACTS
 !Image secret
 1. that which is not primary/conventional
 2. that which moves/exchanges
 3. that which is the beings name
 !Image yay
 Together Form An Incantation
-~ TELL KEY FACTS
 To Summon The Being That Deals In Money!
 !Image smile
 Now I Am Going To Go Back To Appreciating The Rocks
@@ -672,9 +724,25 @@ I Fr*cking Love Rocks
 !GoTo ROCK LOOP
 
 
+
+
+
 ~ JUMP SURFACE FIRST
 !Image wow
+!IfFlag jeff_stop_scaring_me
+!GoTo JUMP SURFACE FIRST ALT
 AAAAAA
+!GoTo JUMP SURFACE FIRST CONT
+
+
+
+~ JUMP SURFACE FIRST ALT
+STOP SCARING ME WITH... THAT...
+!GoTo JUMP SURFACE FIRST CONT
+
+
+
+~ JUMP SURFACE FIRST CONT
 Oh Dang
 !Image hmmm
 Jumping To Dodge The
@@ -1264,14 +1332,15 @@ Please do not bother me again!
 !Exec appear_angry
 YOU DARE TAKE ME AWAY FROM MY WORK AGAIN!!
 !Image evil
-you will feel my wrath
+You will feel my wrath
 !IfFlag jeff_killed_by_key
 !GoTo WAIT ALREADY DOOMED
 !Exec game_over
 ~ WAIT ALREADY DOOMED
 !Image left
-Wait it appears that your timeline is already doomed
+Wait, Jeff was killed
 !Image right
+It appears that your timeline is already doomed
 Then I shall \"take care\" of you later
 !Image evil
 !Exec leave_angry
@@ -1372,9 +1441,71 @@ text = "your screen is almost as wide as your mother
           lol"
 label_settings = SubResource("LabelSettings_qnost")
 
+[node name="mobile_ui" type="CanvasLayer" parent="Camera2D"]
+unique_name_in_owner = true
+layer = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/mobile_ui"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Camera2D/mobile_ui/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Camera2D/mobile_ui/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.5
+mouse_filter = 2
+
+[node name="mobile_inventory" type="Button" parent="Camera2D/mobile_ui/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
+
+[node name="Control" type="Control" parent="Camera2D/mobile_ui/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/mobile_ui/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="mobile_left" type="Button" parent="Camera2D/mobile_ui/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<="
+
+[node name="Control" type="Control" parent="Camera2D/mobile_ui/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+mouse_filter = 2
+
+[node name="mobile_right" type="Button" parent="Camera2D/mobile_ui/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "=>"
+
 [connection signal="arrow_back_down" from="row 0" to="Camera2D" method="_on_row_0_arrow_back_down"]
 [connection signal="fix_camera_position" from="row 0" to="Camera2D" method="_on_row_0_fix_camera_position"]
 [connection signal="clicked" from="row 1/arrow_into_hole" to="Camera2D" method="_on_arrow_into_hole_clicked"]
+[connection signal="secret" from="row 1/Photo1" to="Camera2D/m" method="_on_photo_1_secret"]
 [connection signal="travel_through_vault" from="row 1/Node2D3/vault" to="Camera2D" method="_on_vault_travel_through_vault"]
 [connection signal="utilize_hole" from="row 1/CeillingHole" to="Camera2D" method="_on_ceilling_hole_utilize_hole"]
 [connection signal="jeff_recovered" from="row 2/CaveFull/ControlPannel" to="row 1/jeff" method="_on_control_pannel_jeff_recovered"]
@@ -1382,3 +1513,4 @@ label_settings = SubResource("LabelSettings_qnost")
 [connection signal="june_recovered" from="row 2/CaveFull/ControlPannel" to="row 1/june" method="_on_control_pannel_june_recovered"]
 [connection signal="clicked" from="row 2/arrow_out_of_vault" to="Camera2D" method="_on_arrow_out_of_vault_clicked"]
 [connection signal="game_is_over" from="Camera2D/m" to="Camera2D" method="_on_m_game_is_over"]
+[connection signal="pressed" from="Camera2D/mobile_ui/VBoxContainer/HBoxContainer2/mobile_inventory" to="Camera2D/Inventory" method="_on_mobile_inventory_pressed"]

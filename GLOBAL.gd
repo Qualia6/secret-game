@@ -29,13 +29,16 @@ const starting_flags = {
 	&"june_up": false,
 	&"game_end": false,
 	&"jeff_said_puzzle": false,
+	&"jeff_stop_scaring_me": true,
+	&"mobile": false,
 }
 
 static var flags: Dictionary = starting_flags.duplicate()
 
 static func update_flag(flag: StringName, value):
-	flags[flag] = value
-	emitter.updated.emit()
+	if flags[flag] != value:
+		flags[flag] = value
+		emitter.updated.emit()
 
 static func reset():
 	flags = starting_flags.duplicate()

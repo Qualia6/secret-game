@@ -141,7 +141,9 @@ label_settings = SubResource("LabelSettings_yxx3c")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2
-text = "aka the genocide ending"
+text = "aka the genocide ending                            aka the bad ending
+aka the only possible first ending possible on first play though due to lack of knowledge
+aka the ending for pathetic non-omnicipent beings such as m"
 label_settings = SubResource("LabelSettings_8u835")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]

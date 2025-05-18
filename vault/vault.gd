@@ -13,7 +13,7 @@ func _clicked() -> void:
 
 
 func _on_animation_animation_finished(_anim_name: StringName) -> void:
-	GLOBAL.update_flag(&"vault_open", true)
+	GLOBAL.update_flag(&"vault_opened", true)
 
 
 func _on_into_vault_arrow_clicked() -> void:
